@@ -247,19 +247,16 @@
         return stored ? JSON.parse(stored) : defaultSmpSchools;
       });
 
-      // State kunjungan dengan migrasi data multi-visit per bulan
       const [visits, setVisits] = useState(() => {
         const stored = localStorage.getItem("sips_visits_multi_v1");
         if (stored) {
           return JSON.parse(stored);
         } else {
-          // Migrasi dari data versi lama jika ada
           const legacy = localStorage.getItem("sips_visits_v3") || localStorage.getItem("sips_visits");
           if (legacy) {
             try {
               const parsed = JSON.parse(legacy);
               return parsed.map(v => {
-                // Format lama memiliki list bulan dengan objek tunggal atau array checklist boolean
                 let monthsDetail = Array(12).fill(null).map(() => []);
                 if (v.monthsDetail) {
                   monthsDetail = v.monthsDetail.map(m => {
@@ -756,14 +753,12 @@
           list: listKunjunganBulan
         });
         
-        // Reset form input kunjungan baru
         setNewVisitDate(new Date().toISOString().split('T')[0]);
         setNewVisitMateri("");
         setModalType("visit_month");
         setIsModalOpen(true);
       };
 
-      // Simpan multi-kunjungan ke array bulan bersangkutan
       const handleAddVisitToCell = (e) => {
         e.preventDefault();
         if (!newVisitDate || !newVisitMateri.trim()) {
@@ -779,10 +774,8 @@
         const updatedVisits = visits.map(v => {
           if (v.id === selectedVisitCell.visitId) {
             const updatedDetails = v.monthsDetail ? [...v.monthsDetail] : Array(12).fill(null).map(() => []);
-            // Dorong item kunjungan baru ke dalam array bulan tersebut
             updatedDetails[selectedVisitCell.monthIndex] = [...(updatedDetails[selectedVisitCell.monthIndex] || []), newVisitItem];
             
-            // Perbarui state lokal modal agar langsung bereaksi di layar
             setSelectedVisitCell({
               ...selectedVisitCell,
               list: updatedDetails[selectedVisitCell.monthIndex]
@@ -794,11 +787,10 @@
         });
 
         setVisits(updatedVisits);
-        setNewVisitMateri(""); // Reset materi input saja
+        setNewVisitMateri(""); 
         showNotification(`Kunjungan baru berhasil ditambahkan pada bulan ${selectedVisitCell.monthName}.`);
       };
 
-      // Menghapus salah satu rincian kunjungan dari list bulanan
       const handleDeleteVisitFromCell = (itemIndex) => {
         const updatedVisits = visits.map(v => {
           if (v.id === selectedVisitCell.visitId) {
@@ -865,7 +857,7 @@
             <nav className="flex-1 px-4 py-6 space-y-1">
               <button 
                 onClick={() => { setCurrentTab("dashboard"); handleResetSearch(); }} 
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "dashboard" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-amber-400" : "text-emerald-100 hover:bg-emerald-750 hover:text-white"}`}
+                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "dashboard" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-amber-400" : "text-emerald-100 hover:bg-emerald-755 hover:text-white"}`}
               >
                 <i className="fa-solid fa-chart-line w-5 text-center text-base"></i>
                 <span>Dashboard</span>
@@ -873,7 +865,7 @@
 
               <button 
                 onClick={() => { setCurrentTab("kunjungan"); handleResetSearch(); }} 
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "kunjungan" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-amber-400" : "text-emerald-100 hover:bg-emerald-750 hover:text-white"}`}
+                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "kunjungan" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-amber-400" : "text-emerald-100 hover:bg-emerald-755 hover:text-white"}`}
               >
                 <i className="fa-solid fa-calendar-check w-5 text-center text-base"></i>
                 <span>Kunjungan Sekolah</span>
@@ -881,7 +873,7 @@
 
               <button 
                 onClick={() => { setCurrentTab("tk"); handleResetSearch(); }} 
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "tk" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-fuchsia-400" : "text-emerald-100 hover:bg-emerald-750 hover:text-white"}`}
+                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "tk" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-fuchsia-400" : "text-emerald-100 hover:bg-emerald-755 hover:text-white"}`}
               >
                 <i className="fa-solid fa-shapes w-5 text-center text-base text-fuchsia-300"></i>
                 <span>Data TK</span>
@@ -889,7 +881,7 @@
 
               <button 
                 onClick={() => { setCurrentTab("sd"); handleResetSearch(); }} 
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "sd" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-blue-400" : "text-emerald-100 hover:bg-emerald-750 hover:text-white"}`}
+                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "sd" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-blue-400" : "text-emerald-100 hover:bg-emerald-755 hover:text-white"}`}
               >
                 <i className="fa-solid fa-school w-5 text-center text-base text-blue-300"></i>
                 <span>Data SD</span>
@@ -897,7 +889,7 @@
 
               <button 
                 onClick={() => { setCurrentTab("smp"); handleResetSearch(); }} 
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "smp" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-cyan-400" : "text-emerald-100 hover:bg-emerald-750 hover:text-white"}`}
+                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "smp" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-cyan-400" : "text-emerald-100 hover:bg-emerald-755 hover:text-white"}`}
               >
                 <i className="fa-solid fa-building-columns w-5 text-center text-base text-cyan-300"></i>
                 <span>Data SMP</span>
@@ -905,7 +897,7 @@
 
               <button 
                 onClick={() => { setCurrentTab("upload"); handleResetSearch(); }} 
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "upload" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-emerald-400" : "text-emerald-100 hover:bg-emerald-750 hover:text-white"}`}
+                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "upload" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-emerald-400" : "text-emerald-100 hover:bg-emerald-755 hover:text-white"}`}
               >
                 <i className="fa-solid fa-cloud-arrow-up w-5 text-center text-base text-emerald-300"></i>
                 <span>Upload Excel</span>
@@ -913,7 +905,7 @@
 
               <button 
                 onClick={() => { setCurrentTab("pkks"); handleResetSearch(); }} 
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "pkks" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-amber-400" : "text-emerald-100 hover:bg-emerald-750 hover:text-white"}`}
+                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "pkks" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-amber-400" : "text-emerald-100 hover:bg-emerald-755 hover:text-white"}`}
               >
                 <i className="fa-solid fa-id-card-clip w-5 text-center text-base"></i>
                 <span>PKKS</span>
@@ -921,7 +913,7 @@
 
               <button 
                 onClick={() => { setCurrentTab("refleksi"); handleResetSearch(); }} 
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "refleksi" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-amber-400" : "text-emerald-100 hover:bg-emerald-750 hover:text-white"}`}
+                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "refleksi" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-amber-400" : "text-emerald-100 hover:bg-emerald-755 hover:text-white"}`}
               >
                 <i className="fa-regular fa-comments w-5 text-center text-base"></i>
                 <span>Refleksi</span>
@@ -1023,7 +1015,7 @@
                       <p>Sistem Informasi Pengawas Sekolah (SIPS) memfasilitasi pendataan kualitatif dan kuantitatif bagi pengawas binaan. Dengan pemetaan komprehensif dari jenjang <strong>Taman Kanak-Kanak (TK)</strong>, <strong>Sekolah Dasar (SD)</strong>, hingga <strong>Sekolah Menengah Pertama (SMP)</strong>.</p>
                       <ul className="list-disc pl-5 space-y-2">
                         <li><strong>Dukungan Multi-Kunjungan Bulanan:</strong> Klik langsung pada sel bulan di tabel Kunjungan Sekolah untuk menambah, merekam, atau menghapus lebih dari satu kunjungan beserta rincian materi pendampingan di bulan tersebut.</li>
-                        <li><strong>Cetak Laporan Format Resmi:</strong> Menghasilkan dokumen cetak laporan matriks bulanan formal yang rapi lengkap dengan kolom tanda tangan pengawas sekolah dan dinas terkait.</li>
+                        <li><strong>Cetak Laporan Tanpa Kop Dinas:</strong> Menghasilkan dokumen cetak laporan matriks bulanan formal yang bersih dari Kop Dinas, lengkap dengan kolom tanda tangan pengawas sekolah dan instansi terkait.</li>
                       </ul>
                       <p className="text-emerald-700 font-semibold bg-emerald-50 p-3 rounded-lg border border-emerald-100"><i className="fa-solid fa-lightbulb mr-1.5"></i> Informasi: Data Anda tersimpan secara lokal dan aman di browser komputer Anda. Klik tombol <strong>Cetak Laporan</strong> di pojok kanan atas untuk mengekspor data ke dalam berkas fisik atau PDF.</p>
                     </div>
@@ -1032,12 +1024,11 @@
               )}
 
               {/* ======================================================= */}
-              {/* 2. KONTEN TAB: KUNJUNGAN SEKOLAH (MULTI-VISIT BULANAN) */}
+              {/* 2. KONTEN TAB: KUNJUNGAN SEKOLAH */}
               {/* ======================================================= */}
               {currentTab === "kunjungan" && (
                 <div className="bg-white rounded-xl shadow border border-slate-200 p-6 no-print">
                   
-                  {/* Bagian Atas: Header & Aksi Utama */}
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4 border-b border-slate-100 pb-4">
                     <div>
                       <h2 className="text-2xl font-bold text-slate-800 flex items-center">
@@ -1048,7 +1039,6 @@
                     </div>
                   </div>
 
-                  {/* Tombol Tambah & Cetak */}
                   <div className="flex flex-wrap gap-2.5 mb-6 no-print">
                     <button 
                       onClick={() => handleOpenModal("visit_new")}
@@ -1066,7 +1056,6 @@
                     </button>
                   </div>
 
-                  {/* Kolom Pencarian / Filter Kunjungan */}
                   <div className="bg-slate-50 p-4 rounded-lg flex flex-wrap gap-4 mb-6 no-print">
                     <div className="relative flex-1 min-w-[240px]">
                       <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
@@ -1083,13 +1072,11 @@
                     <button onClick={handleResetSearch} className="bg-slate-400 hover:bg-slate-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all shadow-sm">Reset</button>
                   </div>
 
-                  {/* Informasi cara penginputan materi */}
                   <div className="bg-sky-50 border border-sky-200 text-sky-800 text-xs rounded-lg p-3 mb-4 flex items-center gap-2 no-print">
                     <i className="fa-solid fa-lightbulb text-base text-sky-600"></i>
                     <span><strong>Petunjuk Interaktif:</strong> Klik langsung pada sel bulan (kolom <strong>Jan</strong> s.d <strong>Des</strong>) untuk menambah, mengedit, atau menghapus <strong>satu atau lebih rincian tanggal dan materi kunjungan</strong> dalam bulan bersangkutan.</span>
                   </div>
 
-                  {/* Tabel Checklist & Materi Bulanan */}
                   <div className="overflow-x-auto custom-scrollbar border border-slate-200 rounded-xl">
                     <table className="w-full text-left text-sm border-collapse min-w-[1000px]">
                       <thead>
@@ -1166,7 +1153,6 @@
                     </table>
                   </div>
 
-                  {/* Legenda Keterangan */}
                   <div className="mt-4 text-xs text-slate-500 italic flex items-center gap-4 no-print">
                     <span><strong>Legenda:</strong></span>
                     <span className="flex items-center gap-1"><i className="fa-solid fa-circle-check text-emerald-600"></i> Terjadwal (Ada Tanggal & Materi)</span>
@@ -1415,7 +1401,7 @@
                           <i className={`fa-solid mr-2.5 ${currentTab === "sd" ? "fa-school text-blue-600" : "fa-building-columns text-cyan-600"}`}></i>
                           Data Jenjang {currentTab === "sd" ? "Sekolah Dasar (SD)" : "Sekolah Menengah Pertama (SMP)"}
                         </h2>
-                        <p className="text-slate-500 text-sm mt-1">Data Administrasi Profil, Kesiswaan, Rombongan Belajar, dan Tenaga Guru Pengajar.</p>
+                        <p className="text-slate-500 text-sm mt-1">Data Administrasi Profil, Kesiswaan, Rombongan Belajar, and Tenaga Guru Pengajar.</p>
                       </div>
                       <button 
                         onClick={() => handleOpenModal(currentTab === "sd" ? "sd_sekolah" : "smp_sekolah")}
@@ -1942,7 +1928,7 @@
                         <i className="fa-regular fa-comments text-emerald-600 mr-2"></i>
                         Data Refleksi Sekolah
                       </h2>
-                      <p className="text-slate-500 text-sm mt-1">Jurnal pendampingan, komite pembelajaran, dan evaluasi berkala program sekolah.</p>
+                      <p className="text-slate-500 text-sm mt-1">Jurnal pendampingan, komite pembelajaran, and evaluasi berkala program sekolah.</p>
                     </div>
                     <button 
                       onClick={() => handleOpenModal("refleksi")}
@@ -2014,24 +2000,17 @@
               )}
 
               {/* ======================================================= */}
-              {/* AREA KHUSUS PRINT CETAK LAPORAN FORMAL (KOP SURAT DINAS) */}
+              {/* AREA KHUSUS PRINT CETAK LAPORAN (KOP DINAS DIHAPUS) */}
               {/* ======================================================= */}
               <div className="hidden print:block w-full text-black">
-                {/* 1. KOP SURAT DINAS FORMAL */}
-                <div className="text-center border-b-4 border-double border-black pb-4 mb-6 flex items-center justify-between">
-                  <div className="w-16 h-16 bg-slate-200 border border-black flex items-center justify-center font-bold text-[10px] uppercase text-center p-1">LOGO KOTA</div>
-                  <div className="flex-1 px-4 text-center">
-                    <h3 className="text-sm font-bold uppercase tracking-wide leading-tight">Pemerintah Kota {printConfig.kotaTtd}</h3>
-                    <h2 className="text-base font-extrabold uppercase tracking-wider leading-tight">Dinas Pendidikan dan Kebudayaan/h2>
-                    <p className="text-[10px] italic mt-0.5">Jalan Merdeka Raya No. 450, Telepon (0711) 313131, Kota {printConfig.kotaTtd}</p>
-                  </div>
-                  <div className="w-16 h-16 bg-slate-200 border border-black flex items-center justify-center font-bold text-[10px] uppercase text-center p-1">LOGO TUT WURI</div>
-                </div>
+                
+                {/* 1. KOP SURAT DINAS FORMAL - TELAH DIHAPUS SESUAI PERMINTAAN USER */}
+                {/* Untuk transisi visual yang elegan saat dicetak, langsung dimulai dari Judul Laporan */}
 
                 {/* 2. JUDUL LAPORAN */}
-                <div className="text-center mb-6">
-                  <h1 className="text-sm font-bold uppercase underline">Laporan Kunjungan & Pendampingan Pengawas Sekolah</h1>
-                  <p className="text-[11px] font-semibold mt-1 uppercase">Tingkat: {printConfig.jenjangFilter === "SEMUA" ? "TK, SD & SMP" : printConfig.jenjangFilter} Binaan</p>
+                <div className="text-center mb-6 pt-4">
+                  <h1 className="text-base font-bold uppercase underline tracking-wide">Laporan Kunjungan & Pendampingan Pengawas Sekolah</h1>
+                  <p className="text-xs font-semibold mt-1.5 uppercase">Tingkat: {printConfig.jenjangFilter === "SEMUA" ? "TK, SD & SMP" : printConfig.jenjangFilter} Binaan</p>
                   <p className="text-[10px] text-slate-600 mt-0.5">Tahun Anggaran Jurnal: 2026</p>
                 </div>
 
@@ -2072,7 +2051,7 @@
                     </table>
                   </div>
                 ) : (
-                  // ISI KONTEN LAPORAN DETAIL (TANGGAL & MATERI SETIAP BULAN - MENGAKOMODASI MULTI-VISIT)
+                  // ISI KONTEN LAPORAN DETAIL (TANGGAL & MATERI SETIAP BULAN)
                   <div>
                     <p className="text-xs font-bold mb-2">A. Rekapitulasi Rincian Tanggal & Materi Kegiatan Pendampingan (Multi-Visit):</p>
                     <table className="w-full text-[10px] border border-black print-border">
@@ -2091,7 +2070,6 @@
                           return visits
                             .filter(v => printConfig.jenjangFilter === "SEMUA" || v.jenjang === printConfig.jenjangFilter)
                             .map((v) => {
-                              // Mengumpulkan semua rincian kunjungan aktif
                               const allActiveVisits = [];
                               (v.monthsDetail || []).forEach((mList, mIdx) => {
                                 mList.forEach(visitItem => {
@@ -2140,7 +2118,7 @@
                 <div className="mt-12 flex justify-between text-[11px] px-8">
                   <div>
                     <p className="font-semibold">Mengetahui,</p>
-                    <p className="font-semibold uppercase">Kepala Dinas Pendidikan dan Kebudayaan {printConfig.kotaTtd}</p>
+                    <p className="font-semibold uppercase">Kepala Dinas Pendidikan {printConfig.kotaTtd}</p>
                     <div className="h-16"></div>
                     <p className="font-extrabold underline">......................................................</p>
                     <p className="text-[9px] text-slate-500">NIP. .................................................</p>
