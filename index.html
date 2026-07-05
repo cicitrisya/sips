@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SIPS - Sistem Informasi Pengawas Sekolah (TK, SD & SMP) </title>
+  <title>SIPS - Sistem Informasi Pengawas Sekolah (TK, SD & SMP)</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -28,7 +28,7 @@
     body {
       font-family: 'Inter', sans-serif;
     }
-    /* Sembunyikan elemen tertentu saat mencetak laporan */
+    
     @media print {
       .no-print {
         display: none !important;
@@ -37,6 +37,11 @@
         width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
+        background-color: white !important;
+        color: black !important;
+      }
+      body {
+        background-color: white !important;
       }
       table {
         page-break-inside: auto;
@@ -45,7 +50,11 @@
         page-break-inside: avoid;
         page-break-after: auto;
       }
+      .print-border {
+        border: 1px solid #000 !important;
+      }
     }
+    
     /* Efek scroll yang mulus */
     .custom-scrollbar::-webkit-scrollbar {
       width: 6px;
@@ -71,7 +80,6 @@
   <script type="text/babel">
     const { useState, useEffect } = React;
 
-    // --- DATA DEFAULT (MOCK DATA) SEBAGAI TEMPLATE AWAL ---
     const defaultTkSchools = [
       {
         id: "tk-1",
@@ -83,8 +91,8 @@
         kepsek: "Dra. Linda Hartati, M.Pd.",
         hpKepsek: "08127112233",
         email: "tkpembina_plg@sch.id",
-        murid: { LA: 18, PA: 20, LB: 22, PB: 24 }, // LA: Laki-laki Kelompok A, PA: Perempuan Kelompok A, dsb.
-        rombel: [1, 2], // Index 0: Kelompok A, Index 1: Kelompok B
+        murid: { LA: 18, PA: 20, LB: 22, PB: 24 },
+        rombel: [1, 2],
         guru: { pns: 4, nonAsn: 2, yayasan: 0, tendik: 1, kepsek: 1 }
       },
       {
@@ -152,10 +160,86 @@
     ];
 
     const defaultVisits = [
-      { id: "v-0", namaSekolah: "TK Pembina Negeri Palembang", jenjang: "TK", status: "NEGERI", checklist: [true, true, true, false, false, false, false, false, false, false, false, false] },
-      { id: "v-1", namaSekolah: "SD Negeri 1 Palembang", jenjang: "SD", status: "NEGERI", checklist: [true, true, false, false, true, false, false, false, true, false, true, false] },
-      { id: "v-2", namaSekolah: "SD Swasta IT Al-Azhar", jenjang: "SD", status: "SWASTA", checklist: [true, false, true, false, true, false, true, false, true, false, true, false] },
-      { id: "v-3", namaSekolah: "SMP Negeri 1 Palembang", jenjang: "SMP", status: "NEGERI", checklist: [true, true, true, true, false, true, false, false, true, true, false, true] }
+      { 
+        id: "v-0", 
+        namaSekolah: "TK Pembina Negeri Palembang", 
+        jenjang: "TK", 
+        status: "NEGERI", 
+        monthsDetail: [
+          { visited: true, tanggal: "2026-01-12", materi: "Pendampingan RKAS PAUD & KTSP" },
+          { visited: true, tanggal: "2026-02-10", materi: "Supervisi Media Pembelajaran Kreatif" },
+          { visited: true, tanggal: "2026-03-05", materi: "Observasi Projek P5 Tema Budaya Lokal" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: false, tanggal: "", materi: "" }
+        ]
+      },
+      { 
+        id: "v-1", 
+        namaSekolah: "SD Negeri 1 Palembang", 
+        jenjang: "SD", 
+        status: "NEGERI", 
+        monthsDetail: [
+          { visited: true, tanggal: "2026-01-15", materi: "Evaluasi Awal Semester & Kesiapan Buku Kurmer" },
+          { visited: true, tanggal: "2026-02-18", materi: "Supervisi Akademik Guru Kelas Rendah" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: true, tanggal: "2026-05-14", materi: "Asesmen Sumatif & Kenaikan Kelas" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: true, tanggal: "2026-09-08", materi: "Kesiapan Pelaksanaan ANBK Gelombang I" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: true, tanggal: "2026-11-20", materi: "Pendampingan Rapor Pendidikan & PBD" },
+          { visited: false, tanggal: "", materi: "" }
+        ]
+      },
+      { 
+        id: "v-2", 
+        namaSekolah: "SD Swasta IT Al-Azhar", 
+        jenjang: "SD", 
+        status: "SWASTA", 
+        monthsDetail: [
+          { visited: true, tanggal: "2026-01-20", materi: "Bimbingan Teknis Kurikulum Merdeka Mandiri Berbagi" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: true, tanggal: "2026-03-12", materi: "Pemantauan Pelaksanaan Ujian Sekolah" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: true, tanggal: "2026-05-18", materi: "Evaluasi Kinerja Pendidik & Tenaga Kependidikan" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: true, tanggal: "2026-07-22", materi: "Supervisi Administrasi MPLS Tahun Ajaran Baru" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: true, tanggal: "2026-09-15", materi: "Simulasi ANBK dan Verifikasi Lab Komputer" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: true, tanggal: "2026-11-24", materi: "Pendampingan Akreditasi Perpustakaan Sekolah" },
+          { visited: false, tanggal: "", materi: "" }
+        ]
+      },
+      { 
+        id: "v-3", 
+        namaSekolah: "SMP Negeri 1 Palembang", 
+        jenjang: "SMP", 
+        status: "NEGERI", 
+        monthsDetail: [
+          { visited: true, tanggal: "2026-01-25", materi: "Monitoring Pemenuhan Jam Mengajar dan Beban Kerja Guru" },
+          { visited: true, tanggal: "2026-02-22", materi: "Supervisi Klinis Guru Mata Pelajaran IPA & Matematika" },
+          { visited: true, tanggal: "2026-03-18", materi: "Pembinaan Manajemen Komite Sekolah & Paguyuban" },
+          { visited: true, tanggal: "2026-04-10", materi: "Pendampingan Penyusunan Soal Ujian Akhir Jenjang" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: true, tanggal: "2026-06-15", materi: "Verifikasi Kelulusan Siswa Kelas IX" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: true, tanggal: "2026-09-22", materi: "Pemantauan Pelaksanaan Projek Penguatan Profil Pancasila" },
+          { visited: true, tanggal: "2026-10-18", materi: "Supervisi Manajerial Kepala Sekolah dan TU" },
+          { visited: false, tanggal: "", materi: "" },
+          { visited: true, tanggal: "2026-12-15", materi: "Evaluasi Pelaporan Semester Ganjil" }
+        ]
+      }
     ];
 
     const defaultPkks = [
@@ -194,9 +278,33 @@
         return stored ? JSON.parse(stored) : defaultSmpSchools;
       });
 
+      // State kunjungan dengan migrasi data jika data lama masih menggunakan format checklist biasa
       const [visits, setVisits] = useState(() => {
-        const stored = localStorage.getItem("sips_visits");
-        return stored ? JSON.parse(stored) : defaultVisits;
+        const stored = localStorage.getItem("sips_visits_v3");
+        if (stored) {
+          return JSON.parse(stored);
+        } else {
+          // Cari jika ada data sips_visits lama, migrasikan
+          const legacy = localStorage.getItem("sips_visits");
+          if (legacy) {
+            try {
+              const parsed = JSON.parse(legacy);
+              return parsed.map(v => {
+                if (v.checklist && !v.monthsDetail) {
+                  v.monthsDetail = v.checklist.map((checked, i) => ({
+                    visited: checked,
+                    tanggal: checked ? `2026-${String(i+1).padStart(2, '0')}-10` : "",
+                    materi: checked ? "Kunjungan & Pendampingan Rutin" : ""
+                  }));
+                }
+                return v;
+              });
+            } catch(e) {
+              return defaultVisits;
+            }
+          }
+          return defaultVisits;
+        }
       });
 
       const [pkks, setPkks] = useState(() => {
@@ -230,7 +338,7 @@
       }, [smpSchools]);
 
       useEffect(() => {
-        localStorage.setItem("sips_visits", JSON.stringify(visits));
+        localStorage.setItem("sips_visits_v3", JSON.stringify(visits));
       }, [visits]);
 
       useEffect(() => {
@@ -247,9 +355,23 @@
 
       // State Pengaturan Modal Form
       const [isModalOpen, setIsModalOpen] = useState(false);
-      const [modalType, setModalType] = useState(""); // "tk_sekolah", "sd_sekolah", "smp_sekolah", "pkks", "refleksi"
+      const [modalType, setModalType] = useState(""); // "tk_sekolah", "sd_sekolah", "smp_sekolah", "pkks", "refleksi", "visit_month", "visit_new"
       const [editData, setEditData] = useState(null);
       const [formData, setFormData] = useState({});
+
+      // State Tambahan untuk mengelola Kunjungan Bulan Tertentu
+      const [selectedVisitCell, setSelectedVisitCell] = useState(null); // { visitId, monthIndex, schoolName, monthName }
+
+      // State Kustom Cetak Laporan (Disesuaikan dengan mockup di gambar)
+      const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
+      const [printConfig, setPrintConfig] = useState({
+        tipeLaporan: "matriks", // "matriks" (seperti gambar) atau "detail" (dengan daftar materi lengkap)
+        jenjangFilter: "SEMUA", // "SEMUA", "TK", "SD", "SMP"
+        namaPengawas: "Cici Trisya W.H.",
+        nipPengawas: "19xxxxxxxxxxxxxxx",
+        kotaTtd: "OKU Timur",
+        tanggalTtd: "2026-07-05"
+      });
 
       // State Konfirmasi Hapus Kustom (Menggantikan confirm)
       const [confirmDelete, setConfirmDelete] = useState({ isOpen: false, type: "", id: "", title: "" });
@@ -342,12 +464,10 @@
               return;
             }
 
-            // Melakukan pemetaan dan validasi baris ke struktur tabel pratinjau
             const parsedData = jsonData.map((row, idx) => {
               const rowNpsn = String(row["NPSN"] || "").trim();
               const rowNama = String(row["Nama Sekolah"] || "").trim();
 
-              // Deteksi kecocokan sekolah berdasarkan NPSN di database lokal saat ini
               let dbSchools = uploadJenjang === "TK" ? tkSchools : (uploadJenjang === "SD" ? sdSchools : smpSchools);
               let matchingSchool = dbSchools.find(s => s.npsn === rowNpsn);
               
@@ -400,7 +520,7 @@
         let updateCount = 0;
 
         previewRows.forEach(({ npsn, nama, status, rawData }) => {
-          if (status === "SALAH") return; // Abaikan data siswa/rombel/guru dari sekolah tak terdaftar
+          if (status === "SALAH") return;
 
           let existingIndex = updatedSchools.findIndex(s => s.npsn === npsn);
 
@@ -426,8 +546,14 @@
             } else {
               updatedSchools.push(newSchoolObj);
               importCount++;
-              // Otomatis masukkan ke agenda kunjungan bulanan jika baru
-              visits.push({ id: "v-" + Date.now() + "-" + npsn, namaSekolah: newSchoolObj.nama, jenjang: uploadJenjang, status: newSchoolObj.status, checklist: Array(12).fill(false) });
+              // Otomatis masukkan ke agenda kunjungan bulanan baru jika baru
+              visits.push({ 
+                id: "v-" + Date.now() + "-" + npsn, 
+                namaSekolah: newSchoolObj.nama, 
+                jenjang: uploadJenjang, 
+                status: newSchoolObj.status, 
+                monthsDetail: Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" })) 
+              });
             }
           } else if (uploadType === "murid" && existingIndex >= 0) {
             let school = updatedSchools[existingIndex];
@@ -489,30 +615,25 @@
           }
         });
 
-        // Set ke masing-masing state utama
         if (uploadJenjang === "TK") setTkSchools(updatedSchools);
         else if (uploadJenjang === "SD") setSdSchools(updatedSchools);
         else if (uploadJenjang === "SMP") setSmpSchools(updatedSchools);
 
-        setVisits([...visits]); // update kunjungan list
+        setVisits([...visits]);
 
         showNotification(`Sukses! Mengimpor ${importCount} Sekolah Baru & Mengupdate ${updateCount} Data Binaan.`, "success");
         
-        // Reset state upload
         setPreviewRows([]);
         setExcelFileName("");
-        // Arahkan kembali ke tab jenjang bersangkutan
         setCurrentTab(uploadJenjang.toLowerCase());
       };
 
-      // Membuka modal form dalam kondisi Tambah maupun Edit
       const handleOpenModal = (type, data = null) => {
         setModalType(type);
         setEditData(data);
         if (data) {
           setFormData({ ...data });
         } else {
-          // Inisialisasi formulir baru kosong sesuai tipe jenjang
           if (type === "tk_sekolah") {
             setFormData({
               nama: "",
@@ -524,7 +645,7 @@
               hpKepsek: "",
               email: "",
               murid: { LA: 0, PA: 0, LB: 0, PB: 0 },
-              rombel: [0, 0], // Kelompok A, Kelompok B
+              rombel: [0, 0],
               guru: { pns: 0, nonAsn: 0, yayasan: 0, tendik: 0, kepsek: 1 }
             });
           } else if (type === "sd_sekolah" || type === "smp_sekolah") {
@@ -547,12 +668,13 @@
             setFormData({ sekolah: "", indikator: "Aktif", observasi: "A", keterangan: "" });
           } else if (type === "refleksi") {
             setFormData({ namaSekolah: "", pertemuan: 1, tanggal: new Date().toISOString().split('T')[0], deskripsi: "", status: "Aktif" });
+          } else if (type === "visit_new") {
+            setFormData({ namaSekolah: "", jenjang: "SD", status: "NEGERI" });
           }
         }
         setIsModalOpen(true);
       };
 
-      // Menyimpan data hasil inputan form (Tambah / Edit)
       const handleSaveData = (e) => {
         e.preventDefault();
         
@@ -564,8 +686,13 @@
             const newId = "tk-" + Date.now();
             const newSchool = { ...formData, id: newId };
             setTkSchools([...tkSchools, newSchool]);
-            // Otomatis masukkan ke daftar kunjungan
-            setVisits([...visits, { id: "v-" + Date.now(), namaSekolah: formData.nama, jenjang: "TK", status: formData.status, checklist: Array(12).fill(false) }]);
+            setVisits([...visits, { 
+              id: "v-" + Date.now(), 
+              namaSekolah: formData.nama, 
+              jenjang: "TK", 
+              status: formData.status, 
+              monthsDetail: Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" })) 
+            }]);
             showNotification("Data TK Baru Berhasil Ditambahkan!");
           }
         } else if (modalType === "sd_sekolah") {
@@ -576,8 +703,13 @@
             const newId = "sd-" + Date.now();
             const newSchool = { ...formData, id: newId };
             setSdSchools([...sdSchools, newSchool]);
-            // Otomatis masukkan ke daftar kunjungan
-            setVisits([...visits, { id: "v-" + Date.now(), namaSekolah: formData.nama, jenjang: "SD", status: formData.status, checklist: Array(12).fill(false) }]);
+            setVisits([...visits, { 
+              id: "v-" + Date.now(), 
+              namaSekolah: formData.nama, 
+              jenjang: "SD", 
+              status: formData.status, 
+              monthsDetail: Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" })) 
+            }]);
             showNotification("Data SD Baru Berhasil Ditambahkan!");
           }
         } else if (modalType === "smp_sekolah") {
@@ -588,8 +720,13 @@
             const newId = "smp-" + Date.now();
             const newSchool = { ...formData, id: newId };
             setSmpSchools([...smpSchools, newSchool]);
-            // Otomatis masukkan ke daftar kunjungan
-            setVisits([...visits, { id: "v-" + Date.now(), namaSekolah: formData.nama, jenjang: "SMP", status: formData.status, checklist: Array(12).fill(false) }]);
+            setVisits([...visits, { 
+              id: "v-" + Date.now(), 
+              namaSekolah: formData.nama, 
+              jenjang: "SMP", 
+              status: formData.status, 
+              monthsDetail: Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" })) 
+            }]);
             showNotification("Data SMP Baru Berhasil Ditambahkan!");
           }
         } else if (modalType === "pkks") {
@@ -610,6 +747,16 @@
             setReflections([...reflections, newRefl]);
             showNotification("Data Refleksi Baru Berhasil Ditambahkan!");
           }
+        } else if (modalType === "visit_new") {
+          const newVisit = {
+            id: "v-" + Date.now(),
+            namaSekolah: formData.namaSekolah,
+            jenjang: formData.jenjang,
+            status: formData.status,
+            monthsDetail: Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" }))
+          };
+          setVisits([...visits, newVisit]);
+          showNotification("Data Kunjungan Sekolah Baru Berhasil Ditambahkan!");
         }
         setIsModalOpen(false);
       };
@@ -649,13 +796,55 @@
         setConfirmDelete({ isOpen: false, type: "", id: "", title: "" });
       };
 
-      // Update checklist kunjungan bulanan
-      const handleToggleChecklist = (visitId, monthIndex) => {
+      const handleOpenVisitCellModal = (visit, mIdx) => {
+        const detail = visit.monthsDetail?.[mIdx] || { visited: false, tanggal: "", materi: "" };
+        setSelectedVisitCell({
+          visitId: visit.id,
+          monthIndex: mIdx,
+          schoolName: visit.namaSekolah,
+          monthName: monthNames[mIdx]
+        });
+        setFormData({
+          visited: detail.visited,
+          tanggal: detail.tanggal || new Date().toISOString().split('T')[0],
+          materi: detail.materi || ""
+        });
+        setModalType("visit_month");
+        setIsModalOpen(true);
+      };
+
+      const handleSaveVisitCell = (e) => {
+        e.preventDefault();
+        setVisits(visits.map(v => {
+          if (v.id === selectedVisitCell.visitId) {
+            const updatedDetails = v.monthsDetail ? [...v.monthsDetail] : Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" }));
+            updatedDetails[selectedVisitCell.monthIndex] = {
+              visited: formData.visited,
+              tanggal: formData.visited ? formData.tanggal : "",
+              materi: formData.visited ? formData.materi : ""
+            };
+            return { ...v, monthsDetail: updatedDetails };
+          }
+          return v;
+        }));
+        showNotification(`Data kunjungan bulan ${selectedVisitCell.monthName} di ${selectedVisitCell.schoolName} berhasil disimpan.`);
+        setIsModalOpen(false);
+        setSelectedVisitCell(null);
+      };
+
+      // Fungsi cepat untuk toggle status kunjungan (dengan checklist default)
+      const handleToggleQuickVisit = (visitId, mIdx) => {
         setVisits(visits.map(v => {
           if (v.id === visitId) {
-            const updated = [...v.checklist];
-            updated[monthIndex] = !updated[monthIndex];
-            return { ...v, checklist: updated };
+            const updatedDetails = v.monthsDetail ? [...v.monthsDetail] : Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" }));
+            const current = updatedDetails[mIdx];
+            updatedDetails[mIdx] = {
+              ...current,
+              visited: !current.visited,
+              tanggal: !current.visited ? new Date().toISOString().split('T')[0] : "",
+              materi: !current.visited ? "Kunjungan rutin pengawas" : ""
+            };
+            return { ...v, monthsDetail: updatedDetails };
           }
           return v;
         }));
@@ -669,12 +858,13 @@
       const totalReflectionsCount = reflections.length;
 
       const monthNames = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+      const monthFullNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
       // Semua daftar nama sekolah digabung untuk mempermudah filter dropdown
       const allSchoolNames = [
-        ...tkSchools.map(s => ({ nama: s.nama, tipe: "TK" })),
-        ...sdSchools.map(s => ({ nama: s.nama, tipe: "SD" })),
-        ...smpSchools.map(s => ({ nama: s.nama, tipe: "SMP" }))
+        ...tkSchools.map(s => ({ nama: s.nama, tipe: "TK", status: s.status })),
+        ...sdSchools.map(s => ({ nama: s.nama, tipe: "SD", status: s.status })),
+        ...smpSchools.map(s => ({ nama: s.nama, tipe: "SMP", status: s.status }))
       ];
 
       return (
@@ -682,17 +872,15 @@
           
           {/* BANNER NOTIFIKASI KUSTOM */}
           {notification && (
-            <div className={`fixed top-4 right-4 z-[60] flex items-center space-x-3 px-5 py-3 rounded-lg shadow-xl text-white font-semibold transition-all duration-300 transform translate-y-0 ${notification.type === "error" ? "bg-red-600" : "bg-emerald-600"}`}>
+            <div className={`fixed top-4 right-4 z-[100] flex items-center space-x-3 px-5 py-3 rounded-lg shadow-xl text-white font-semibold transition-all duration-300 transform translate-y-0 ${notification.type === "error" ? "bg-red-600" : "bg-emerald-600"}`}>
               <i className={`fa-solid ${notification.type === "error" ? "fa-circle-exclamation" : "fa-circle-check"}`}></i>
               <span>{notification.message}</span>
             </div>
           )}
 
-          {}
           {/* SIDEBAR SIPS */}
           <aside className="w-full md:w-64 bg-emerald-800 text-white flex flex-col no-print shrink-0 border-r border-emerald-900 shadow-md">
             <div className="p-6 border-b border-emerald-700/60 flex flex-col items-center">
-              {/* Desain Avatar Guru/Admin */}
               <div className="w-20 h-20 bg-amber-400 rounded-full flex items-center justify-center text-3xl font-bold text-emerald-900 border-4 border-slate-100 shadow-md mb-3 overflow-hidden">
                 <i className="fa-solid fa-user-tie"></i>
               </div>
@@ -746,7 +934,6 @@
                 <span>Data SMP</span>
               </button>
 
-              {/* BARU: Menu Navigasi Upload Excel */}
               <button 
                 onClick={() => { setCurrentTab("upload"); handleResetSearch(); }} 
                 className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${currentTab === "upload" ? "bg-emerald-900 text-white shadow-md font-bold border-l-4 border-emerald-400" : "text-emerald-100 hover:bg-emerald-750 hover:text-white"}`}
@@ -773,7 +960,7 @@
             </nav>
 
             <div className="p-6 border-t border-emerald-700/40 text-center text-xs text-emerald-200">
-              <p className="font-semibold">SIPS v2.6 (TK-SD-SMP)</p>
+              <p className="font-semibold">SIPS Binaan v2.6</p>
               <p className="mt-1 opacity-80">ND PRO</p>
               <p className="mt-1 font-mono text-[10px] opacity-60">Hak Cipta © 2026</p>
             </div>
@@ -790,8 +977,8 @@
               </div>
               <div className="flex items-center space-x-3">
                 <button 
-                  onClick={() => window.print()} 
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg text-sm transition flex items-center space-x-2 shadow-sm"
+                  onClick={() => setIsPrintModalOpen(true)} 
+                  className="bg-amber-500 hover:bg-amber-600 text-white font-bold px-4 py-2 rounded-lg text-sm transition flex items-center space-x-2 shadow-sm"
                 >
                   <i className="fa-solid fa-print"></i>
                   <span>Cetak Laporan</span>
@@ -806,7 +993,7 @@
               {/* 1. KONTEN TAB: DASHBOARD */}
               {/* ==================================== */}
               {currentTab === "dashboard" && (
-                <div>
+                <div className="no-print">
                   <div className="mb-6">
                     <h2 className="text-2xl font-bold text-slate-800">Selamat Datang Di Dashboard SIPS</h2>
                     <p className="text-slate-500 text-sm mt-1">Halaman monitoring profil binaan, kesiswaan, rombel, dan kualifikasi penilaian kinerja TK, SD & SMP.</p>
@@ -814,7 +1001,6 @@
 
                   {/* Statistik Cards */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 mb-8">
-                    {/* Card TK */}
                     <div className="bg-purple-600 text-white p-5 rounded-xl shadow relative overflow-hidden">
                       <div className="text-xs uppercase font-bold tracking-wider opacity-80">Total TK</div>
                       <div className="text-3xl font-extrabold mt-2">{totalTkCount}</div>
@@ -837,10 +1023,10 @@
                     </div>
 
                     <div className="bg-red-500 text-white p-5 rounded-xl shadow relative overflow-hidden">
-                      <div className="text-xs uppercase font-bold tracking-wider opacity-80">Pengaduan</div>
-                      <div className="text-3xl font-extrabold mt-2">0</div>
-                      <div className="text-[10px] mt-4 bg-white/20 inline-block px-2 py-0.5 rounded font-medium">Laporan Masuk</div>
-                      <i className="fa-solid fa-triangle-exclamation absolute right-3 bottom-3 text-white/10 text-5xl"></i>
+                      <div className="text-xs uppercase font-bold tracking-wider opacity-80">Kunjungan</div>
+                      <div className="text-3xl font-extrabold mt-2">{totalVisitsCount}</div>
+                      <div className="text-[10px] mt-4 bg-white/20 inline-block px-2 py-0.5 rounded font-medium">Sekolah Terpantau</div>
+                      <i className="fa-solid fa-calendar-check absolute right-3 bottom-3 text-white/10 text-5xl"></i>
                     </div>
 
                     <div className="bg-emerald-600 text-white p-5 rounded-xl shadow relative overflow-hidden">
@@ -858,48 +1044,61 @@
                     </div>
                   </div>
 
-                  {/* Petunjuk Penggunaan & Informasi */}
+                  {/* Petunjuk Penggunaan */}
                   <div className="bg-white rounded-xl shadow border border-slate-200 p-6">
                     <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center">
                       <i className="fa-solid fa-circle-info text-emerald-600 mr-2 text-xl"></i>
-                      Informasi Pengawasan & Ruang Lingkup SIPS (TK, SD & SMP)
+                      Informasi Pengawasan & Ruang Lingkup SIPS
                     </h3>
                     <div className="text-slate-600 text-sm leading-relaxed space-y-4">
-                      <p>Sistem Informasi Pengawas Sekolah (SIPS) memfasilitasi pendataan kualitatif dan kuantitatif bagi pengawas binaan. Dengan pemetaan komprehensif dari jenjang **Taman Kanak-Kanak (TK)**, **Sekolah Dasar (SD)**, hingga **Sekolah Menengah Pertama (SMP)**, sistem ini mencakup:</p>
+                      <p>Sistem Informasi Pengawas Sekolah (SIPS) memfasilitasi pendataan kualitatif dan kuantitatif bagi pengawas binaan. Dengan pemetaan komprehensif dari jenjang <strong>Taman Kanak-Kanak (TK)</strong>, <strong>Sekolah Dasar (SD)</strong>, hingga <strong>Sekolah Menengah Pertama (SMP)</strong>.</p>
                       <ul className="list-disc pl-5 space-y-2">
-                        <li><strong>Kunjungan Bulanan:</strong> Pemantauan intensif kunjungan instrumen pengawas dari Januari hingga Desember.</li>
-                        <li><strong>Profil & Pembagian Kelas Unik:</strong> 
-                          <ul className="list-circle pl-5 mt-1 space-y-1">
-                            <li><span className="font-semibold text-fuchsia-700">TK</span>: Pendataan berbasis Kelompok A (usia 4-5 tahun) & Kelompok B (usia 5-6 tahun).</li>
-                            <li><span className="font-semibold text-blue-700">SD</span>: Tingkat Kelas I s.d VI.</li>
-                            <li><span className="font-semibold text-cyan-700">SMP</span>: Tingkat Kelas VII s.d IX.</li>
-                          </ul>
-                        </li>
-                        <li><strong>Manajemen Tendik & PKKS:</strong> Merekam rasio guru pns, yayasan, honorer beserta kinerja akumulatif kepala sekolah binaan.</li>
+                        <li><strong>Kunjungan Bulanan Terpadu:</strong> Kini Anda dapat mencatat detail <strong>tanggal kunjungan</strong> serta <strong>materi pembinaan</strong> setiap bulan untuk setiap sekolah binaan dengan mengklik sel bulan pada tabel.</li>
+                        <li><strong>Cetak Laporan Format Resmi:</strong> Menghasilkan dokumen cetak laporan matriks bulanan formal yang rapi (seperti pada berkas WhatsApp Image 2026-07-05 at 17.08.47.jpeg) lengkap dengan kolom tanda tangan pengawas sekolah.</li>
                       </ul>
-                      <p className="text-emerald-700 font-semibold bg-emerald-50 p-3 rounded-lg border border-emerald-100"><i className="fa-solid fa-lightbulb mr-1.5"></i> Informasi: Data Anda tersimpan secara lokal dan aman di browser komputer Anda. Jika Anda ingin memindahkan data, silakan klik tombol cetak laporan untuk membuat format PDF / lembar fisik atau gunakan menu <strong>Upload Excel</strong> untuk impor data massal.</p>
+                      <p className="text-emerald-700 font-semibold bg-emerald-50 p-3 rounded-lg border border-emerald-100"><i className="fa-solid fa-lightbulb mr-1.5"></i> Informasi: Data Anda tersimpan secara lokal dan aman di browser komputer Anda. Klik tombol <strong>Cetak Laporan</strong> di pojok kanan atas untuk mengekspor data ke dalam berkas fisik atau PDF.</p>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* ==================================== */}
-              {/* 2. KONTEN TAB: KUNJUNGAN SEKOLAH */}
-              {/* ==================================== */}
+              {/* ======================================================= */}
+              {/* 2. KONTEN TAB: KUNJUNGAN SEKOLAH (UPDATED & MATCHED TO IMAGE) */}
+              {/* ======================================================= */}
               {currentTab === "kunjungan" && (
                 <div className="bg-white rounded-xl shadow border border-slate-200 p-6">
+                  
+                  {/* Bagian Atas: Header & Aksi Utama (Sesuai Gambar Mockup) */}
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4 border-b border-slate-100 pb-4">
                     <div>
                       <h2 className="text-2xl font-bold text-slate-800 flex items-center">
                         <i className="fa-solid fa-calendar-check text-emerald-600 mr-2"></i>
                         Data Kunjungan Sekolah
                       </h2>
-                      <p className="text-slate-500 text-sm mt-1">Daftar presensi, pengawasan, dan checklist pendampingan bulanan tingkat TK, SD & SMP.</p>
+                      <p className="text-slate-500 text-sm mt-1">Daftar presensi, pengawasan bulanan, dan pendampingan materi tingkat TK, SD & SMP.</p>
                     </div>
                   </div>
 
-                  {/* Kolom Pencarian */}
-                  <div className="bg-slate-50 p-4 rounded-lg flex flex-wrap gap-4 mb-6">
+                  {/* Tombol Tambah & Cetak seperti yang ada di Gambar WhatsApp */}
+                  <div className="flex flex-wrap gap-2.5 mb-6 no-print">
+                    <button 
+                      onClick={() => handleOpenModal("visit_new")}
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2.5 rounded-lg text-sm transition-all flex items-center space-x-2 shadow-sm"
+                    >
+                      <i className="fa-solid fa-plus text-xs"></i>
+                      <span>Tambah Data</span>
+                    </button>
+                    <button 
+                      onClick={() => setIsPrintModalOpen(true)}
+                      className="bg-amber-500 hover:bg-amber-600 text-white font-bold px-4 py-2.5 rounded-lg text-sm transition flex items-center space-x-2 shadow-sm"
+                    >
+                      <i className="fa-solid fa-print"></i>
+                      <span>Print</span>
+                    </button>
+                  </div>
+
+                  {/* Kolom Pencarian / Filter Kunjungan */}
+                  <div className="bg-slate-50 p-4 rounded-lg flex flex-wrap gap-4 mb-6 no-print">
                     <div className="relative flex-1 min-w-[240px]">
                       <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
                         <i className="fa-solid fa-magnifying-glass"></i>
@@ -915,17 +1114,22 @@
                     <button onClick={handleResetSearch} className="bg-slate-400 hover:bg-slate-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all shadow-sm">Reset</button>
                   </div>
 
-                  {/* Tabel Checklist Bulanan */}
-                  <div className="overflow-x-auto custom-scrollbar">
-                    <table className="w-full text-left text-sm border-collapse min-w-[800px]">
+                  {/* Informasi cara penginputan materi */}
+                  <div className="bg-sky-50 border border-sky-200 text-sky-800 text-xs rounded-lg p-3 mb-4 flex items-center gap-2 no-print">
+                    <i className="fa-solid fa-lightbulb text-base text-sky-600"></i>
+                    <span><strong>Petunjuk:</strong> Klik langsung pada sel bulan (kolom <strong>Jan</strong> s.d <strong>Des</strong>) untuk menambahkan/mengubah <strong>tanggal</strong> dan <strong>materi pembinaan</strong> kunjungan sekolah.</span>
+                  </div>
+
+                  {/* Tabel Checklist & Materi Bulanan (Sesuai Layout Gambar) */}
+                  <div className="overflow-x-auto custom-scrollbar border border-slate-200 rounded-xl">
+                    <table className="w-full text-left text-sm border-collapse min-w-[1000px]">
                       <thead>
-                        <tr className="bg-emerald-50 text-emerald-900 uppercase font-bold text-xs border-b border-emerald-200">
-                          <th className="py-3 px-4 w-12 text-center">No</th>
-                          <th className="py-3 px-4">Nama Sekolah</th>
-                          <th className="py-3 px-4 w-24 text-center">Jenjang</th>
-                          <th className="py-3 px-4 w-24 text-center">Status</th>
+                        <tr className="bg-slate-100 text-slate-700 font-bold text-xs uppercase border-b border-slate-200">
+                          <th className="py-3 px-4 w-12 text-center border-r border-slate-200">No</th>
+                          <th className="py-3 px-4 border-r border-slate-200">Nama Sekolah</th>
+                          <th className="py-3 px-4 w-28 text-center border-r border-slate-200">Status</th>
                           {monthNames.map((m, i) => (
-                            <th key={i} className="py-3 px-1 text-center font-bold text-[11px] w-12">{m}</th>
+                            <th key={i} className="py-3 px-1 text-center font-bold text-[11px] w-[64px] border-r border-slate-200">{m}</th>
                           ))}
                           <th className="py-3 px-4 text-center w-16 no-print">Aksi</th>
                         </tr>
@@ -934,32 +1138,43 @@
                         {visits
                           .filter(v => v.namaSekolah.toLowerCase().includes(searchQuery.toLowerCase()))
                           .map((v, index) => (
-                            <tr key={v.id} className="border-b border-slate-100 hover:bg-slate-50/60 transition-all">
-                              <td className="py-4 px-4 font-semibold text-slate-500 text-center">{index + 1}</td>
-                              <td className="py-4 px-4 font-bold text-slate-800 text-sm">{v.namaSekolah}</td>
-                              <td className="py-4 px-4 text-center">
-                                <span className={`px-2 py-0.5 rounded text-xs font-extrabold ${
-                                  v.jenjang === "TK" ? "bg-purple-100 text-purple-700" :
-                                  v.jenjang === "SD" ? "bg-blue-100 text-blue-700" : "bg-cyan-100 text-cyan-700"
-                                }`}>{v.jenjang}</span>
+                            <tr key={v.id} className="border-b border-slate-200 hover:bg-slate-50/60 transition-all">
+                              <td className="py-4 px-4 font-semibold text-slate-500 text-center border-r border-slate-200">{index + 1}</td>
+                              <td className="py-4 px-4 border-r border-slate-200">
+                                <div className="font-bold text-slate-800 text-sm">{v.namaSekolah}</div>
+                                <div className="text-[10px] text-slate-400 mt-0.5 font-medium">Jenjang: {v.jenjang}</div>
                               </td>
-                              <td className="py-4 px-4 text-center">
+                              <td className="py-4 px-4 text-center border-r border-slate-200">
                                 <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${v.status === "NEGERI" ? "bg-emerald-50 text-emerald-700 border-emerald-200" : "bg-amber-50 text-amber-700 border-amber-200"}`}>{v.status}</span>
                               </td>
-                              {v.checklist.map((checked, mIdx) => (
-                                <td key={mIdx} className="py-4 px-1 text-center">
-                                  <input 
-                                    type="checkbox" 
-                                    checked={checked}
-                                    onChange={() => handleToggleChecklist(v.id, mIdx)}
-                                    className="w-4 h-4 text-emerald-600 border-slate-300 rounded focus:ring-emerald-500 cursor-pointer no-print"
-                                  />
-                                  {/* Simbol saat dicetak */}
-                                  <span className="hidden print:inline-block font-bold text-emerald-600 text-xs">
-                                    {checked ? "✓" : "-"}
-                                  </span>
-                                </td>
-                              ))}
+                              {monthNames.map((_, mIdx) => {
+                                const detail = v.monthsDetail?.[mIdx] || { visited: false, tanggal: "", materi: "" };
+                                return (
+                                  <td 
+                                    key={mIdx} 
+                                    onClick={() => handleOpenVisitCellModal(v, mIdx)}
+                                    className={`py-2 px-1 text-center border-r border-slate-150 cursor-pointer transition-all ${
+                                      detail.visited 
+                                        ? "bg-emerald-50 hover:bg-emerald-100 text-emerald-800" 
+                                        : "hover:bg-slate-100/80 text-slate-300"
+                                    }`}
+                                    title={detail.visited ? `Materi: ${detail.materi}\nTanggal: ${detail.tanggal}` : "Belum ada kunjungan"}
+                                  >
+                                    {detail.visited ? (
+                                      <div className="flex flex-col items-center justify-center">
+                                        <i className="fa-solid fa-circle-check text-emerald-600 text-sm"></i>
+                                        {detail.tanggal && (
+                                          <span className="text-[9px] font-semibold text-emerald-700 mt-0.5">
+                                            {detail.tanggal.split('-')[2]}/{detail.tanggal.split('-')[1]}
+                                          </span>
+                                        )}
+                                      </div>
+                                    ) : (
+                                      <span className="text-slate-300 text-xs font-light">-</span>
+                                    )}
+                                  </td>
+                                );
+                              })}
                               <td className="py-4 px-4 text-center no-print">
                                 <button onClick={() => triggerDeleteConfirm("visit", v.id, v.namaSekolah)} className="bg-red-500 hover:bg-red-600 text-white p-1.5 rounded-lg transition-all" title="Hapus Kunjungan">
                                   <i className="fa-solid fa-trash text-xs"></i>
@@ -975,6 +1190,13 @@
                       </tbody>
                     </table>
                   </div>
+
+                  {/* Legenda Keterangan */}
+                  <div className="mt-4 text-xs text-slate-500 italic flex items-center gap-4 no-print">
+                    <span><strong>Legenda:</strong></span>
+                    <span className="flex items-center gap-1"><i className="fa-solid fa-circle-check text-emerald-600"></i> Terjadwal (Ada Tanggal & Materi)</span>
+                    <span>- Belum Ada Kunjungan</span>
+                  </div>
                 </div>
               )}
 
@@ -982,7 +1204,7 @@
               {/* 3. KONTEN TAB: DETAIL SEKOLAH (TK) */}
               {/* ======================================================= */}
               {currentTab === "tk" && (
-                <div>
+                <div className="no-print">
                   <div className="bg-white rounded-xl shadow border border-slate-200 p-6 mb-6">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-slate-100 pb-4">
                       <div>
@@ -990,19 +1212,18 @@
                           <i className="fa-solid fa-shapes text-purple-600 mr-2.5"></i>
                           Data Jenjang Taman Kanak-Kanak (TK)
                         </h2>
-                        <p className="text-slate-500 text-sm mt-1">SIPS: Profil, Kesiswaan Kelompok A & B, Rombel, serta Guru TK.</p>
+                        <p className="text-slate-500 text-sm mt-1">Profil, Kesiswaan Kelompok A & B, Rombel, serta Guru TK Binaan.</p>
                       </div>
                       <button 
                         onClick={() => handleOpenModal("tk_sekolah")}
-                        className="font-semibold px-4 py-2.5 rounded-lg text-sm bg-purple-600 hover:bg-purple-700 text-white transition-all flex items-center space-x-2 shadow-sm no-print"
+                        className="font-semibold px-4 py-2.5 rounded-lg text-sm bg-purple-600 hover:bg-purple-700 text-white transition-all flex items-center space-x-2 shadow-sm"
                       >
                         <i className="fa-solid fa-plus"></i>
                         <span>Tambah Data TK</span>
                       </button>
                     </div>
 
-                    {/* Sub Navigation Tabs Data Detail TK */}
-                    <div className="flex space-x-1 border-b border-slate-200 no-print">
+                    <div className="flex space-x-1 border-b border-slate-200">
                       {["sekolah", "murid", "rombel", "guru"].map((sub) => (
                         <button
                           key={sub}
@@ -1018,8 +1239,7 @@
                       ))}
                     </div>
 
-                    {/* Filter Pencarian */}
-                    <div className="mt-6 flex flex-wrap gap-4 p-4 bg-slate-50 rounded-lg no-print">
+                    <div className="mt-6 flex flex-wrap gap-4 p-4 bg-slate-50 rounded-lg">
                       <div className="relative flex-1 min-w-[240px]">
                         <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
                           <i className="fa-solid fa-magnifying-glass"></i>
@@ -1036,7 +1256,6 @@
                     </div>
                   </div>
 
-                  {/* SUB TAB TK: DATA SEKOLAH */}
                   {tkTab === "sekolah" && (
                     <div className="bg-white rounded-xl shadow border border-slate-200 overflow-hidden">
                       <div className="overflow-x-auto custom-scrollbar">
@@ -1052,7 +1271,7 @@
                               <th className="py-3.5 px-4">Kepala Sekolah</th>
                               <th className="py-3.5 px-4 w-32">No. HP</th>
                               <th className="py-3.5 px-4">E-mail</th>
-                              <th className="py-3.5 px-4 text-center w-28 no-print">Aksi</th>
+                              <th className="py-3.5 px-4 text-center w-28">Aksi</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -1071,11 +1290,11 @@
                                   <td className="py-4 px-4 font-semibold text-slate-700 text-xs">{s.kepsek}</td>
                                   <td className="py-4 px-4 text-xs font-mono">{s.hpKepsek}</td>
                                   <td className="py-4 px-4 text-xs underline text-blue-600 select-all">{s.email}</td>
-                                  <td className="py-4 px-4 text-center space-x-1.5 no-print">
-                                    <button onClick={() => handleOpenModal("tk_sekolah", s)} className="bg-amber-500 hover:bg-amber-600 text-white p-1.5 rounded-lg transition-all" title="Edit Data">
+                                  <td className="py-4 px-4 text-center space-x-1.5">
+                                    <button onClick={() => handleOpenModal("tk_sekolah", s)} className="bg-amber-500 hover:bg-amber-600 text-white p-1.5 rounded-lg transition-all">
                                       <i className="fa-solid fa-pen text-xs"></i>
                                     </button>
-                                    <button onClick={() => triggerDeleteConfirm("tk", s.id, s.nama)} className="bg-red-500 hover:bg-red-600 text-white p-1.5 rounded-lg transition-all" title="Hapus Data">
+                                    <button onClick={() => triggerDeleteConfirm("tk", s.id, s.nama)} className="bg-red-500 hover:bg-red-600 text-white p-1.5 rounded-lg transition-all">
                                       <i className="fa-solid fa-trash text-xs"></i>
                                     </button>
                                   </td>
@@ -1087,13 +1306,12 @@
                     </div>
                   )}
 
-                  {/* SUB TAB TK: DATA MURID */}
                   {tkTab === "murid" && (
                     <div className="bg-white rounded-xl shadow border border-slate-200 overflow-hidden">
                       <div className="overflow-x-auto custom-scrollbar">
                         <table className="w-full text-left text-sm border-collapse min-w-[700px]">
                           <thead>
-                            <tr className="bg-purple-50 text-purple-950 font-bold text-xs uppercase border-b border-purple-200">
+                            <tr className="bg-purple-50 text-purple-955 font-bold text-xs uppercase border-b border-purple-200">
                               <th className="py-3 px-4 w-12 text-center" rowSpan={2}>No</th>
                               <th className="py-3 px-4" rowSpan={2}>Nama TK</th>
                               <th className="py-2 text-center border-l border-purple-200/50" colSpan={2}>Kelompok A (4-5 Tahun)</th>
@@ -1130,13 +1348,12 @@
                     </div>
                   )}
 
-                  {/* SUB TAB TK: ROMBEL */}
                   {tkTab === "rombel" && (
                     <div className="bg-white rounded-xl shadow border border-slate-200 overflow-hidden">
                       <div className="overflow-x-auto custom-scrollbar">
                         <table className="w-full text-left text-sm border-collapse min-w-[600px]">
                           <thead>
-                            <tr className="bg-purple-50 text-purple-950 font-bold text-xs uppercase border-b border-purple-200">
+                            <tr className="bg-purple-50 text-purple-955 font-bold text-xs uppercase border-b border-purple-200">
                               <th className="py-3 px-4 w-12 text-center">No</th>
                               <th className="py-3 px-4">Nama TK</th>
                               <th className="py-2 px-2 text-center border-l border-purple-200/50">Rombel Kelompok A</th>
@@ -1165,19 +1382,18 @@
                     </div>
                   )}
 
-                  {/* SUB TAB TK: GURU */}
                   {tkTab === "guru" && (
                     <div className="bg-white rounded-xl shadow border border-slate-200 overflow-hidden">
                       <div className="overflow-x-auto custom-scrollbar">
                         <table className="w-full text-left text-sm border-collapse min-w-[850px]">
                           <thead>
-                            <tr className="bg-purple-50 text-purple-950 font-bold text-xs uppercase border-b border-purple-200">
+                            <tr className="bg-purple-50 text-purple-955 font-bold text-xs uppercase border-b border-purple-200">
                               <th className="py-3 px-4 w-12 text-center" rowSpan={2}>No</th>
                               <th className="py-3 px-4" rowSpan={2}>Nama TK</th>
                               <th className="py-2 text-center border-l border-purple-200/50" colSpan={3}>Status Kepegawaian Guru</th>
                               <th className="py-3 px-4 text-center border-l border-purple-200/50 w-28 bg-purple-100" rowSpan={2}>Total Guru</th>
-                              <th className="py-3 px-4 text-center border-l border-purple-200/50 w-32 bg-amber-50 text-amber-950" rowSpan={2}>Tendik</th>
-                              <th className="py-3 px-4 text-center border-l border-purple-200/50 w-32 bg-blue-50 text-blue-950" rowSpan={2}>Kepala Sekolah</th>
+                              <th className="py-3 px-4 text-center border-l border-purple-200/50 w-32 bg-amber-50 text-amber-955" rowSpan={2}>Tendik</th>
+                              <th className="py-3 px-4 text-center border-l border-purple-200/50 w-32 bg-blue-50 text-blue-955" rowSpan={2}>Kepala Sekolah</th>
                             </tr>
                             <tr className="bg-purple-50/60 text-purple-900 text-xs font-bold uppercase border-b border-purple-200">
                               <th className="py-2 px-2 text-center border-l border-slate-200">PNS / P3K</th>
@@ -1215,7 +1431,7 @@
               {/* 4 & 5. KONTEN TAB: DETAIL SEKOLAH (SD & SMP) */}
               {/* ======================================================= */}
               {(currentTab === "sd" || currentTab === "smp") && (
-                <div>
+                <div className="no-print">
                   <div className="bg-white rounded-xl shadow border border-slate-200 p-6 mb-6">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-slate-100 pb-4">
                       <div>
@@ -1223,19 +1439,18 @@
                           <i className={`fa-solid mr-2.5 ${currentTab === "sd" ? "fa-school text-blue-600" : "fa-building-columns text-cyan-600"}`}></i>
                           Data Jenjang {currentTab === "sd" ? "Sekolah Dasar (SD)" : "Sekolah Menengah Pertama (SMP)"}
                         </h2>
-                        <p className="text-slate-500 text-sm mt-1">SIPS: Data Administrasi Profil, Kesiswaan, Rombongan Belajar, dan Tenaga Guru Pengajar.</p>
+                        <p className="text-slate-500 text-sm mt-1">Data Administrasi Profil, Kesiswaan, Rombongan Belajar, dan Tenaga Guru Pengajar.</p>
                       </div>
                       <button 
                         onClick={() => handleOpenModal(currentTab === "sd" ? "sd_sekolah" : "smp_sekolah")}
-                        className={`font-semibold px-4 py-2.5 rounded-lg text-sm transition-all flex items-center space-x-2 shadow-sm no-print ${currentTab === "sd" ? "bg-blue-600 hover:bg-blue-700 text-white" : "bg-cyan-600 hover:bg-cyan-700 text-white"}`}
+                        className={`font-semibold px-4 py-2.5 rounded-lg text-sm transition-all flex items-center space-x-2 shadow-sm ${currentTab === "sd" ? "bg-blue-600 hover:bg-blue-700 text-white" : "bg-cyan-600 hover:bg-cyan-700 text-white"}`}
                       >
                         <i className="fa-solid fa-plus"></i>
                         <span>Tambah Data {currentTab === "sd" ? "SD" : "SMP"}</span>
                       </button>
                     </div>
 
-                    {/* Sub Navigation Tabs Data Detail */}
-                    <div className="flex space-x-1 border-b border-slate-200 no-print">
+                    <div className="flex space-x-1 border-b border-slate-200">
                       {["sekolah", "murid", "rombel", "guru"].map((sub) => (
                         <button
                           key={sub}
@@ -1251,8 +1466,7 @@
                       ))}
                     </div>
 
-                    {/* Filter Pencarian */}
-                    <div className="mt-6 flex flex-wrap gap-4 p-4 bg-slate-50 rounded-lg no-print">
+                    <div className="mt-6 flex flex-wrap gap-4 p-4 bg-slate-50 rounded-lg">
                       <div className="relative flex-1 min-w-[240px]">
                         <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
                           <i className="fa-solid fa-magnifying-glass"></i>
@@ -1269,7 +1483,6 @@
                     </div>
                   </div>
 
-                  {/* --- SUB TAB: DATA SEKOLAH --- */}
                   {((currentTab === "sd" && sdTab === "sekolah") || (currentTab === "smp" && smpTab === "sekolah")) && (
                     <div className="bg-white rounded-xl shadow border border-slate-200 overflow-hidden">
                       <div className="overflow-x-auto custom-scrollbar">
@@ -1285,7 +1498,7 @@
                               <th className="py-3.5 px-4">Kepala Sekolah</th>
                               <th className="py-3.5 px-4 w-32">No. HP</th>
                               <th className="py-3.5 px-4">E-mail</th>
-                              <th className="py-3.5 px-4 text-center w-28 no-print">Aksi</th>
+                              <th className="py-3.5 px-4 text-center w-28">Aksi</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -1304,11 +1517,11 @@
                                   <td className="py-4 px-4 font-semibold text-slate-700 text-xs">{s.kepsek}</td>
                                   <td className="py-4 px-4 text-xs font-mono">{s.hpKepsek}</td>
                                   <td className="py-4 px-4 text-xs underline text-blue-600 select-all">{s.email}</td>
-                                  <td className="py-4 px-4 text-center space-x-1.5 no-print">
-                                    <button onClick={() => handleOpenModal(currentTab === "sd" ? "sd_sekolah" : "smp_sekolah", s)} className="bg-amber-500 hover:bg-amber-600 text-white p-1.5 rounded-lg transition-all" title="Edit Data">
+                                  <td className="py-4 px-4 text-center space-x-1.5">
+                                    <button onClick={() => handleOpenModal(currentTab === "sd" ? "sd_sekolah" : "smp_sekolah", s)} className="bg-amber-500 hover:bg-amber-600 text-white p-1.5 rounded-lg transition-all">
                                       <i className="fa-solid fa-pen text-xs"></i>
                                     </button>
-                                    <button onClick={() => triggerDeleteConfirm(currentTab, s.id, s.nama)} className="bg-red-500 hover:bg-red-600 text-white p-1.5 rounded-lg transition-all" title="Hapus Data">
+                                    <button onClick={() => triggerDeleteConfirm(currentTab, s.id, s.nama)} className="bg-red-500 hover:bg-red-600 text-white p-1.5 rounded-lg transition-all">
                                       <i className="fa-solid fa-trash text-xs"></i>
                                     </button>
                                   </td>
@@ -1320,7 +1533,6 @@
                     </div>
                   )}
 
-                  {/* --- SUB TAB: DATA MURID (SD & SMP) --- */}
                   {((currentTab === "sd" && sdTab === "murid") || (currentTab === "smp" && smpTab === "murid")) && (
                     <div className="bg-white rounded-xl shadow border border-slate-200 overflow-hidden">
                       <div className="overflow-x-auto custom-scrollbar">
@@ -1368,7 +1580,6 @@
                                     <td className="py-4 px-4 font-semibold text-slate-500 text-center">{index + 1}</td>
                                     <td className="py-4 px-4 font-bold text-slate-800 text-sm">{s.nama}</td>
                                     
-                                    {/* Data Kelas SD (I-VI) */}
                                     {currentTab === "sd" && (
                                       <React.Fragment>
                                         <td className="py-4 px-2 text-center border-l border-slate-100">{s.murid.L1}</td>
@@ -1386,7 +1597,6 @@
                                       </React.Fragment>
                                     )}
 
-                                    {/* Data Kelas SMP (VII-IX) */}
                                     {currentTab === "smp" && (
                                       <React.Fragment>
                                         <td className="py-4 px-2 text-center border-l border-slate-100">{s.murid.L7}</td>
@@ -1408,7 +1618,6 @@
                     </div>
                   )}
 
-                  {/* --- SUB TAB: DATA ROMBONGAN BELAJAR (ROMBEL) --- */}
                   {((currentTab === "sd" && sdTab === "rombel") || (currentTab === "smp" && smpTab === "rombel")) && (
                     <div className="bg-white rounded-xl shadow border border-slate-200 overflow-hidden">
                       <div className="overflow-x-auto custom-scrollbar">
@@ -1454,7 +1663,6 @@
                     </div>
                   )}
 
-                  {/* --- SUB TAB: DATA GURU & TENDIK --- */}
                   {((currentTab === "sd" && sdTab === "guru") || (currentTab === "smp" && smpTab === "guru")) && (
                     <div className="bg-white rounded-xl shadow border border-slate-200 overflow-hidden">
                       <div className="overflow-x-auto custom-scrollbar">
@@ -1465,8 +1673,8 @@
                               <th className="py-3 px-4" rowSpan={2}>Nama Sekolah</th>
                               <th className="py-2 text-center border-l border-emerald-200/50" colSpan={3}>Status Kepegawaian Guru</th>
                               <th className="py-3 px-4 text-center border-l border-emerald-200/50 w-28 bg-emerald-100" rowSpan={2}>Total Guru</th>
-                              <th className="py-3 px-4 text-center border-l border-emerald-200/50 w-32 bg-amber-50 text-amber-950" rowSpan={2}>Tendik</th>
-                              <th className="py-3 px-4 text-center border-l border-emerald-200/50 w-32 bg-blue-50 text-blue-950" rowSpan={2}>Kepala Sekolah</th>
+                              <th className="py-3 px-4 text-center border-l border-emerald-200/50 w-32 bg-amber-50 text-amber-955" rowSpan={2}>Tendik</th>
+                              <th className="py-3 px-4 text-center border-l border-emerald-200/50 w-32 bg-blue-50 text-blue-955" rowSpan={2}>Kepala Sekolah</th>
                             </tr>
                             <tr className="bg-emerald-50/60 text-emerald-900 text-xs font-bold uppercase border-b border-emerald-200">
                               <th className="py-2 px-2 text-center border-l border-slate-200">PNS / P3K</th>
@@ -1500,12 +1708,11 @@
                 </div>
               )}
 
-              {}
               {/* ======================================================= */}
-              {/* MENU BARU: KONTEN TAB EXCEL DATA UPLOAD */}
+              {/* MENU: KONTEN TAB EXCEL DATA UPLOAD */}
               {/* ======================================================= */}
               {currentTab === "upload" && (
-                <div className="bg-white rounded-xl shadow border border-slate-200 p-6 md:p-8 max-w-4xl mx-auto">
+                <div className="bg-white rounded-xl shadow border border-slate-200 p-6 md:p-8 max-w-4xl mx-auto no-print">
                   <div className="border-b border-slate-100 pb-4 mb-6">
                     <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2.5">
                       <i className="fa-solid fa-cloud-arrow-up text-emerald-600"></i>
@@ -1515,7 +1722,6 @@
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    {/* Panel Konfigurasi Upload */}
                     <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col justify-between">
                       <div className="space-y-4">
                         <h3 className="font-bold text-slate-700 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
@@ -1558,7 +1764,6 @@
                         </div>
                       </div>
 
-                      {/* Download Template Action Button */}
                       <div className="mt-6 pt-4 border-t border-slate-200">
                         <button
                           type="button"
@@ -1572,7 +1777,6 @@
                       </div>
                     </div>
 
-                    {/* Panel Dropzone Berkas */}
                     <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col justify-between">
                       <div className="space-y-4">
                         <h3 className="font-bold text-slate-700 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
@@ -1607,7 +1811,6 @@
                         )}
                       </div>
 
-                      {/* Panduan Pengisian */}
                       <div className="mt-6 pt-4 border-t border-slate-200">
                         <div className="text-[11px] text-slate-500 space-y-1">
                           <p className="font-semibold text-slate-600 uppercase tracking-wide">PENTING:</p>
@@ -1618,8 +1821,6 @@
                     </div>
                   </div>
 
-                  {}
-                  {/* PRATINJAU HASIL VALIDASI DATA SEBELUM IMPORT */}
                   {previewRows.length > 0 && (
                     <div className="mt-8 border-t border-slate-200 pt-6">
                       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
@@ -1673,7 +1874,6 @@
                       </div>
                     </div>
                   )}
-
                 </div>
               )}
 
@@ -1681,26 +1881,25 @@
               {/* 6. KONTEN TAB: PKKS */}
               {/* ==================================== */}
               {currentTab === "pkks" && (
-                <div className="bg-white rounded-xl shadow border border-slate-200 p-6">
+                <div className="bg-white rounded-xl shadow border border-slate-200 p-6 no-print">
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4 border-b border-slate-100 pb-4">
                     <div>
                       <h2 className="text-2xl font-bold text-slate-800 flex items-center">
                         <i className="fa-solid fa-id-card-clip text-emerald-600 mr-2"></i>
                         PKKS (Penilaian Kinerja Kepala Sekolah)
                       </h2>
-                      <p className="text-slate-500 text-sm mt-1">SIPS: Rekapitulasi penilaian kinerja, hasil observasi, dan rekomendasi Kepala Sekolah binaan.</p>
+                      <p className="text-slate-500 text-sm mt-1">Rekapitulasi penilaian kinerja, hasil observasi, dan rekomendasi Kepala Sekolah binaan.</p>
                     </div>
                     <button 
                       onClick={() => handleOpenModal("pkks")}
-                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2.5 rounded-lg text-sm transition-all flex items-center space-x-2 shadow-sm no-print"
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2.5 rounded-lg text-sm transition-all flex items-center space-x-2 shadow-sm"
                     >
                       <i className="fa-solid fa-plus"></i>
                       <span>Tambah Data PKKS</span>
                     </button>
                   </div>
 
-                  {/* Filter Pencarian */}
-                  <div className="bg-slate-50 p-4 rounded-lg flex flex-wrap gap-4 mb-6 no-print">
+                  <div className="bg-slate-50 p-4 rounded-lg flex flex-wrap gap-4 mb-6">
                     <div className="relative flex-1 min-w-[240px]">
                       <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
                         <i className="fa-solid fa-magnifying-glass"></i>
@@ -1716,7 +1915,6 @@
                     <button onClick={handleResetSearch} className="bg-slate-400 hover:bg-slate-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all shadow-sm">Reset</button>
                   </div>
 
-                  {/* Tabel PKKS */}
                   <div className="overflow-x-auto custom-scrollbar">
                     <table className="w-full text-left text-sm border-collapse min-w-[700px]">
                       <thead>
@@ -1726,7 +1924,7 @@
                           <th className="py-3.5 px-4 w-32 text-center">Indikator</th>
                           <th className="py-3.5 px-4 w-32 text-center">Observasi</th>
                           <th className="py-3.5 px-4">Keterangan Penilaian / Rekomendasi</th>
-                          <th className="py-3.5 px-4 text-center w-28 no-print">Aksi</th>
+                          <th className="py-3.5 px-4 text-center w-28">Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1741,7 +1939,7 @@
                               </td>
                               <td className="py-4 px-4 text-center font-black text-amber-600 text-lg">{p.observasi}</td>
                               <td className="py-4 px-4 text-xs text-slate-600 max-w-sm" title={p.keterangan}>{p.keterangan}</td>
-                              <td className="py-4 px-4 text-center space-x-1.5 no-print">
+                              <td className="py-4 px-4 text-center space-x-1.5">
                                 <button onClick={() => handleOpenModal("pkks", p)} className="bg-amber-500 hover:bg-amber-600 text-white p-1.5 rounded-lg transition-all" title="Edit PKKS">
                                   <i className="fa-solid fa-pen text-xs"></i>
                                 </button>
@@ -1761,26 +1959,25 @@
               {/* 7. KONTEN TAB: JURNAL REFLEKSI */}
               {/* ==================================== */}
               {currentTab === "refleksi" && (
-                <div className="bg-white rounded-xl shadow border border-slate-200 p-6">
+                <div className="bg-white rounded-xl shadow border border-slate-200 p-6 no-print">
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4 border-b border-slate-100 pb-4">
                     <div>
                       <h2 className="text-2xl font-bold text-slate-800 flex items-center">
                         <i className="fa-regular fa-comments text-emerald-600 mr-2"></i>
                         Data Refleksi Sekolah
                       </h2>
-                      <p className="text-slate-500 text-sm mt-1">SIPS: Jurnal pendampingan, komite pembelajaran, dan evaluasi berkala program sekolah.</p>
+                      <p className="text-slate-500 text-sm mt-1">Jurnal pendampingan, komite pembelajaran, dan evaluasi berkala program sekolah.</p>
                     </div>
                     <button 
                       onClick={() => handleOpenModal("refleksi")}
-                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2.5 rounded-lg text-sm transition-all flex items-center space-x-2 shadow-sm no-print"
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2.5 rounded-lg text-sm transition-all flex items-center space-x-2 shadow-sm"
                     >
                       <i className="fa-solid fa-plus"></i>
                       <span>Tambah Jurnal Refleksi</span>
                     </button>
                   </div>
 
-                  {/* Filter Pencarian */}
-                  <div className="bg-slate-50 p-4 rounded-lg flex flex-wrap gap-4 mb-6 no-print">
+                  <div className="bg-slate-50 p-4 rounded-lg flex flex-wrap gap-4 mb-6">
                     <div className="relative flex-1 min-w-[240px]">
                       <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
                         <i className="fa-solid fa-magnifying-glass"></i>
@@ -1796,7 +1993,6 @@
                     <button onClick={handleResetSearch} className="bg-slate-400 hover:bg-slate-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all shadow-sm">Reset</button>
                   </div>
 
-                  {/* Tabel Refleksi */}
                   <div className="overflow-x-auto custom-scrollbar">
                     <table className="w-full text-left text-sm border-collapse min-w-[700px]">
                       <thead>
@@ -1807,7 +2003,7 @@
                           <th className="py-3.5 px-4 w-36">Tanggal Jurnal</th>
                           <th className="py-3.5 px-4">Deskripsi Pembahasan / Rekomendasi</th>
                           <th className="py-3.5 px-4 w-28 text-center">Status</th>
-                          <th className="py-3.5 px-4 text-center w-28 no-print">Aksi</th>
+                          <th className="py-3.5 px-4 text-center w-28">Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1825,7 +2021,7 @@
                               <td className="py-4 px-4 text-center">
                                 <span className="bg-emerald-500 text-white text-[9px] font-black tracking-wider px-2 py-0.5 rounded uppercase">{r.status}</span>
                               </td>
-                              <td className="py-4 px-4 text-center space-x-1.5 no-print">
+                              <td className="py-4 px-4 text-center space-x-1.5">
                                 <button onClick={() => handleOpenModal("refleksi", r)} className="bg-amber-500 hover:bg-amber-600 text-white p-1.5 rounded-lg transition-all" title="Edit Refleksi">
                                   <i className="fa-solid fa-pen text-xs"></i>
                                 </button>
@@ -1841,10 +2037,144 @@
                 </div>
               )}
 
+              {/* ======================================================= */}
+              {/* AREA KHUSUS PRINT CETAK LAPORAN FORMAL (KOP SURAT DINAS) */}
+              {/* ======================================================= */}
+              <div className="hidden print:block w-full text-black">
+                {/* 1. KOP SURAT DINAS FORMAL */}
+                <div className="text-center border-b-4 border-double border-black pb-4 mb-6 flex items-center justify-between">
+                  <div className="w-16 h-16 bg-slate-300 rounded flex items-center justify-center font-bold text-xs uppercase text-center border border-black p-1">LOGO KOTA</div>
+                  <div className="flex-1 px-4">
+                    <h3 className="text-base font-bold uppercase tracking-wide">Pemerintah Kota {printConfig.kotaTtd}</h3>
+                    <h2 className="text-lg font-extrabold uppercase tracking-wider">Dinas Pendidikan Nasional</h2>
+                    <p className="text-xs italic mt-0.5">Jalan Merdeka Raya No. 450, Telepon (0711) 313131, Kota {printConfig.kotaTtd}</p>
+                  </div>
+                  <div className="w-16 h-16 bg-slate-300 rounded flex items-center justify-center font-bold text-[10px] uppercase text-center border border-black p-1">LOGO TUT WURI</div>
+                </div>
+
+                {/* 2. JUDUL LAPORAN */}
+                <div className="text-center mb-6">
+                  <h1 className="text-base font-bold uppercase underline">Laporan Kunjungan & Pendampingan Pengawas Sekolah</h1>
+                  <p className="text-xs font-semibold mt-1 uppercase">Tingkat: {printConfig.jenjangFilter === "SEMUA" ? "TK, SD & SMP" : printConfig.jenjangFilter} Binaan</p>
+                  <p className="text-[11px] text-slate-600 mt-0.5">Tahun Anggaran Jurnal: 2026</p>
+                </div>
+
+                {/* 3. ISI KONTEN LAPORAN: MATRIKS CHECKLIST (SEPERTI FOTO WHATSAPP USER) */}
+                {printConfig.tipeLaporan === "matriks" ? (
+                  <div>
+                    <p className="text-xs font-bold mb-2">A. Matriks Monitoring Kunjungan Bulanan:</p>
+                    <table className="w-full text-xs border border-black print-border">
+                      <thead>
+                        <tr className="bg-slate-100 border-b border-black font-bold">
+                          <th className="py-2 px-2 text-center border-r border-black w-10">No</th>
+                          <th className="py-2 px-3 text-left border-r border-black">Nama Sekolah Binaan</th>
+                          <th className="py-2 px-2 text-center border-r border-black w-16">Status</th>
+                          {monthNames.map((m, i) => (
+                            <th key={i} className="py-2 px-1 text-center border-r border-black font-bold text-[10px] w-10">{m}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {visits
+                          .filter(v => printConfig.jenjangFilter === "SEMUA" || v.jenjang === printConfig.jenjangFilter)
+                          .map((v, idx) => (
+                            <tr key={v.id} className="border-b border-black">
+                              <td className="py-2 px-2 text-center border-r border-black">{idx + 1}</td>
+                              <td className="py-2 px-3 border-r border-black font-semibold">{v.namaSekolah}</td>
+                              <td className="py-2 px-2 text-center border-r border-black">{v.status}</td>
+                              {monthNames.map((_, mIdx) => {
+                                const detail = v.monthsDetail?.[mIdx] || { visited: false };
+                                return (
+                                  <td key={mIdx} className="py-2 px-1 text-center border-r border-black font-bold text-xs">
+                                    {detail.visited ? "✓" : "-"}
+                                  </td>
+                                );
+                              })}
+                            </tr>
+                          ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  // ISI KONTEN LAPORAN DETAIL (TANGGAL & MATERI SETIAP BULAN)
+                  <div>
+                    <p className="text-xs font-bold mb-2">A. Rekapitulasi Rincian Tanggal & Materi Kegiatan Pendampingan:</p>
+                    <table className="w-full text-xs border border-black print-border">
+                      <thead>
+                        <tr className="bg-slate-100 border-b border-black font-bold">
+                          <th className="py-2 px-2 text-center border-r border-black w-10">No</th>
+                          <th className="py-2 px-3 text-left border-r border-black w-1/4">Nama Sekolah Binaan</th>
+                          <th className="py-2 px-2 text-center border-r border-black w-24">Bulan</th>
+                          <th className="py-2 px-2 text-center border-r border-black w-28">Tanggal Kunjungan</th>
+                          <th className="py-2 px-3 text-left border-r border-black">Uraian / Materi Kegiatan Pengawasan</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {(() => {
+                          let rowIdx = 0;
+                          return visits
+                            .filter(v => printConfig.jenjangFilter === "SEMUA" || v.jenjang === printConfig.jenjangFilter)
+                            .map((v) => {
+                              const activeMonths = (v.monthsDetail || [])
+                                .map((m, mIdx) => ({ ...m, monthName: monthFullNames[mIdx] }))
+                                .filter(m => m.visited);
+
+                              if (activeMonths.length === 0) {
+                                rowIdx++;
+                                return (
+                                  <tr key={v.id + "-empty"} className="border-b border-black text-[11px]">
+                                    <td className="py-1.5 px-2 text-center border-r border-black">{rowIdx}</td>
+                                    <td className="py-1.5 px-3 border-r border-black font-semibold">{v.namaSekolah}</td>
+                                    <td className="py-1.5 px-2 text-center border-r border-black text-slate-500 italic">-</td>
+                                    <td className="py-1.5 px-2 text-center border-r border-black text-slate-500 italic">-</td>
+                                    <td className="py-1.5 px-3 border-r border-black text-slate-500 italic">Belum ada kunjungan terlaksana</td>
+                                  </tr>
+                                );
+                              }
+
+                              return activeMonths.map((mDetail, subIdx) => {
+                                rowIdx++;
+                                return (
+                                  <tr key={`${v.id}-${subIdx}`} className="border-b border-black text-[11px]">
+                                    <td className="py-1.5 px-2 text-center border-r border-black">{rowIdx}</td>
+                                    <td className="py-1.5 px-3 border-r border-black font-semibold">
+                                      {subIdx === 0 ? v.namaSekolah : <span className="text-slate-400 italic">(Sama)</span>}
+                                    </td>
+                                    <td className="py-1.5 px-2 text-center border-r border-black font-medium">{mDetail.monthName}</td>
+                                    <td className="py-1.5 px-2 text-center border-r border-black font-mono">{mDetail.tanggal}</td>
+                                    <td className="py-1.5 px-3 border-r border-black">{mDetail.materi}</td>
+                                  </tr>
+                                );
+                              });
+                            });
+                        })()}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+
+                {/* 4. LEMBAR TANDA TANGAN (KOLOM TTD PEJABAT/PENGAWAS) */}
+                <div className="mt-12 flex justify-between text-xs px-8">
+                  <div>
+                    <p className="font-semibold">Mengetahui,</p>
+                    <p className="font-semibold uppercase">Kepala Dinas Pendidikan Kota {printConfig.kotaTtd}</p>
+                    <div className="h-20"></div>
+                    <p className="font-extrabold underline">......................................................</p>
+                    <p className="text-[10px] text-slate-500">NIP. .................................................</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-semibold">{printConfig.kotaTtd}, {printConfig.tanggalTtd ? new Date(printConfig.tanggalTtd).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'}) : ""}</p>
+                    <p className="font-semibold">Pengawas Madya Satuan Pendidikan,</p>
+                    <div className="h-20"></div>
+                    <p className="font-extrabold underline">{printConfig.namaPengawas}</p>
+                    <p className="text-[10px] text-slate-500">NIP. {printConfig.nipPengawas}</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </main>
 
-          {}
           {/* ======================================================= */}
           {/* DIALOG MODAL: DINAMIS FORM UNTUK SELURUH INPUT / EDIT */}
           {/* ======================================================= */}
@@ -1860,18 +2190,105 @@
                       modalType === "tk_sekolah" ? "Taman Kanak-Kanak (TK)" :
                       modalType === "sd_sekolah" ? "Sekolah Dasar (SD)" :
                       modalType === "smp_sekolah" ? "Sekolah Menengah (SMP)" :
-                      modalType === "pkks" ? "Hasil Penilaian PKKS" : "Jurnal Refleksi Sekolah"
+                      modalType === "pkks" ? "Hasil Penilaian PKKS" : 
+                      modalType === "visit_month" ? "Detail Kunjungan Bulanan" :
+                      modalType === "visit_new" ? "Tambah Data Kunjungan" : "Jurnal Refleksi Sekolah"
                     }
                   </h3>
-                  <button onClick={() => setIsModalOpen(false)} className="text-white hover:text-amber-300 transition-all text-xl">
+                  <button onClick={() => { setIsModalOpen(false); setSelectedVisitCell(null); }} className="text-white hover:text-amber-300 transition-all text-xl">
                     <i className="fa-solid fa-xmark"></i>
                   </button>
                 </div>
 
                 {/* Form Isian Modal */}
-                <form onSubmit={handleSaveData} className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar text-sm">
+                <form onSubmit={modalType === "visit_month" ? handleSaveVisitCell : handleSaveData} className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar text-sm">
                   
-                  {/* --- A. FORM UNTUK DATA TK (Taman Kanak-Kanak) --- */}
+                  {/* --- A. FORM UNTUK KUNJUNGAN BULANAN (TANGGAL & MATERI SETIAP BULAN) --- */}
+                  {modalType === "visit_month" && selectedVisitCell && (
+                    <div className="space-y-4">
+                      <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-200 text-emerald-900">
+                        <p className="text-xs uppercase font-extrabold tracking-wider text-emerald-800">Sekolah & Periode</p>
+                        <p className="font-extrabold text-lg mt-1">{selectedVisitCell.schoolName}</p>
+                        <p className="text-xs font-semibold mt-0.5">Pendampingan Bulan: <strong className="underline">{selectedVisitCell.monthName} 2026</strong></p>
+                      </div>
+
+                      <div className="flex items-center space-x-3 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        <input 
+                          type="checkbox" 
+                          id="visitedCheck"
+                          className="w-5 h-5 text-emerald-600 border-slate-300 rounded focus:ring-emerald-500 cursor-pointer"
+                          checked={formData.visited || false}
+                          onChange={(e) => setFormData({ ...formData, visited: e.target.checked })}
+                        />
+                        <label htmlFor="visitedCheck" className="text-slate-700 font-bold text-sm cursor-pointer select-none">Tandai Kunjungan Telah Dilaksanakan</label>
+                      </div>
+
+                      {formData.visited && (
+                        <div className="space-y-4 animate-in fade-in slide-in-from-top-2 duration-150">
+                          <div>
+                            <label className="block text-xs font-bold text-slate-700 mb-1">Tanggal Kunjungan Resmi *</label>
+                            <input 
+                              type="date" required
+                              className="w-full border border-slate-300 rounded-lg px-3.5 py-2 text-sm font-mono focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                              value={formData.tanggal || ""}
+                              onChange={(e) => setFormData({ ...formData, tanggal: e.target.value })}
+                            />
+                          </div>
+
+                          <div>
+                            <label className="block text-xs font-bold text-slate-700 mb-1">Uraian Materi / Bentuk Kegiatan Pendampingan *</label>
+                            <textarea 
+                              required rows="3"
+                              className="w-full border border-slate-300 rounded-lg px-3.5 py-2 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                              placeholder="Contoh: Supervisi administrasi pengajaran, Pembinaan IKM, Kesiapan Asesmen Sekolah"
+                              value={formData.materi || ""}
+                              onChange={(e) => setFormData({ ...formData, materi: e.target.value })}
+                            ></textarea>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* --- B. FORM UNTUK TAMBAH BARU DATA KUNJUNGAN --- */}
+                  {modalType === "visit_new" && (
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">Pilih / Ketik Nama Sekolah Binaan *</label>
+                        <select required
+                          className="w-full border border-slate-300 rounded-lg px-3 py-2.5 bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                          value={formData.namaSekolah || ""}
+                          onChange={(e) => {
+                            const match = allSchoolNames.find(s => s.nama === e.target.value);
+                            setFormData({
+                              ...formData,
+                              namaSekolah: e.target.value,
+                              jenjang: match ? match.tipe : "SD",
+                              status: match ? match.status : "NEGERI"
+                            });
+                          }}
+                        >
+                          <option value="">-- Pilih Sekolah Binaan Terdaftar --</option>
+                          {allSchoolNames.map((s, i) => (
+                            <option key={i} value={s.nama}>{`[${s.tipe}] ${s.nama}`}</option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-lg">
+                        <div>
+                          <label className="block text-xs font-bold text-slate-500">Tingkat Jenjang</label>
+                          <p className="text-sm font-extrabold text-slate-700 mt-1">{formData.jenjang || "-"}</p>
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-slate-500">Status Sekolah</label>
+                          <p className="text-sm font-extrabold text-slate-700 mt-1">{formData.status || "-"}</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* --- C. FORM UNTUK DATA TK (Taman Kanak-Kanak) --- */}
                   {modalType === "tk_sekolah" && (
                     <div className="space-y-6">
                       <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
@@ -1964,7 +2381,6 @@
                         </div>
                       </div>
 
-                      {/* DATA SISWA TK: Kategori Kelompok A & B */}
                       <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                         <h4 className="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 text-xs uppercase tracking-wider text-purple-700">Jumlah Siswa TK Per Kelompok</h4>
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -2019,7 +2435,6 @@
                         </div>
                       </div>
 
-                      {/* DATA ROMBEL TK */}
                       <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                         <h4 className="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 text-xs uppercase tracking-wider text-purple-700">Rombongan Belajar (Rombel)</h4>
                         <div className="grid grid-cols-2 gap-4">
@@ -2054,7 +2469,6 @@
                         </div>
                       </div>
 
-                      {/* DATA KEPEGAWAIAN GURU TK */}
                       <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                         <h4 className="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 text-xs uppercase tracking-wider text-purple-700">Status Kepegawaian Guru & Tenaga Kependidikan TK</h4>
                         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -2120,7 +2534,7 @@
                     </div>
                   )}
 
-                  {/* --- B. FORM UNTUK DATA SEKOLAH (SD & SMP) --- */}
+                  {/* --- D. FORM UNTUK DATA SEKOLAH (SD & SMP) --- */}
                   {(modalType === "sd_sekolah" || modalType === "smp_sekolah") && (
                     <div className="space-y-6">
                       <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
@@ -2213,7 +2627,6 @@
                         </div>
                       </div>
 
-                      {/* --- FORM SUB-KOMPONEN: DATA MURID --- */}
                       <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                         <h4 className="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 text-xs uppercase tracking-wider text-blue-700">Jumlah Siswa Per Kelas</h4>
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -2283,7 +2696,6 @@
                         </div>
                       </div>
 
-                      {/* --- FORM SUB-KOMPONEN: DATA ROMBEL --- */}
                       <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                         <h4 className="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 text-xs uppercase tracking-wider text-cyan-700">Rombongan Belajar (Rombel)</h4>
                         <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
@@ -2325,7 +2737,6 @@
                         </div>
                       </div>
 
-                      {/* --- FORM SUB-KOMPONEN: DATA KEPEGAWAIAN GURU --- */}
                       <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                         <h4 className="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 text-xs uppercase tracking-wider text-amber-700">Profil Status Guru & Tenaga Kependidikan</h4>
                         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -2391,7 +2802,7 @@
                     </div>
                   )}
 
-                  {/* --- C. FORM UNTUK PKKS --- */}
+                  {/* --- E. FORM UNTUK PKKS --- */}
                   {modalType === "pkks" && (
                     <div className="space-y-4">
                       <div>
@@ -2445,7 +2856,7 @@
                     </div>
                   )}
 
-                  {/* --- D. FORM UNTUK REFLEKSI --- */}
+                  {/* --- F. FORM UNTUK JURNAL REFLEKSI --- */}
                   {modalType === "refleksi" && (
                     <div className="space-y-4">
                       <div>
@@ -2510,7 +2921,7 @@
                   <div className="bg-slate-50 -mx-6 -mb-6 p-4 mt-8 border-t border-slate-200 flex justify-end space-x-3">
                     <button 
                       type="button" 
-                      onClick={() => setIsModalOpen(false)}
+                      onClick={() => { setIsModalOpen(false); setSelectedVisitCell(null); }}
                       className="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-2 rounded-lg text-xs transition-all shadow-sm"
                     >
                       Batal
@@ -2532,9 +2943,8 @@
             </div>
           )}
 
-          {}
           {/* ======================================================= */}
-          {/* DIALOG MODAL: KONFIRMASI HAPUS KUSTOM (BEBAS DARI CONFIRM) */}
+          {/* DIALOG MODAL: KONFIRMASI HAPUS KUSTOM */}
           {/* ======================================================= */}
           {confirmDelete.isOpen && (
             <div className="fixed inset-0 z-[70] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
@@ -2560,6 +2970,140 @@
                     Ya, Hapus Data
                   </button>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* ======================================================= */}
+          {/* DIALOG MODAL: SETTING & PREVIEW CETAK LAPORAN (KUSTOM) */}
+          {/* ======================================================= */}
+          {isPrintModalOpen && (
+            <div className="fixed inset-0 z-[80] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+              <div className="bg-white rounded-xl shadow-2xl border border-slate-200 max-w-lg w-full flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+                
+                {/* Header Print Modal */}
+                <div className="bg-amber-600 text-white px-6 py-4 flex justify-between items-center">
+                  <h3 className="font-bold text-lg flex items-center gap-2">
+                    <i className="fa-solid fa-print"></i>
+                    <span>Konfigurasi Cetak Laporan Binaan</span>
+                  </h3>
+                  <button onClick={() => setIsPrintModalOpen(false)} className="text-white hover:text-slate-200 text-xl">
+                    <i className="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+
+                {/* Form Input Data Cetak Laporan */}
+                <div className="p-6 space-y-4 overflow-y-auto max-h-[75vh] custom-scrollbar text-xs">
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Pilih Tipe Layout Laporan</label>
+                    <div className="grid grid-cols-2 gap-2">
+                      <button 
+                        onClick={() => setPrintConfig({ ...printConfig, tipeLaporan: "matriks" })}
+                        className={`p-3 rounded-lg border font-bold text-center transition ${
+                          printConfig.tipeLaporan === "matriks" 
+                            ? "bg-amber-50 border-amber-500 text-amber-800" 
+                            : "bg-white border-slate-200 hover:bg-slate-50 text-slate-700"
+                        }`}
+                      >
+                        <i className="fa-solid fa-table-cells block text-lg mb-1"></i>
+                        Matriks Bulanan (✓ / -)
+                      </button>
+                      <button 
+                        onClick={() => setPrintConfig({ ...printConfig, tipeLaporan: "detail" })}
+                        className={`p-3 rounded-lg border font-bold text-center transition ${
+                          printConfig.tipeLaporan === "detail" 
+                            ? "bg-amber-50 border-amber-500 text-amber-800" 
+                            : "bg-white border-slate-200 hover:bg-slate-50 text-slate-700"
+                        }`}
+                      >
+                        <i className="fa-solid fa-list-ol block text-lg mb-1"></i>
+                        Detail Rincian Materi
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block font-bold text-slate-700 mb-1">Filter Jenjang Sekolah Binaan</label>
+                    <select 
+                      className="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                      value={printConfig.jenjangFilter}
+                      onChange={(e) => setPrintConfig({ ...printConfig, jenjangFilter: e.target.value })}
+                    >
+                      <option value="SEMUA">SEMUA JENJANG (TK, SD, SMP)</option>
+                      <option value="TK">TAMAN KANAK-KANAK (TK) SAJA</option>
+                      <option value="SD">SEKOLAH DASAR (SD) SAJA</option>
+                      <option value="SMP">SEKOLAH MENENGAH (SMP) SAJA</option>
+                    </select>
+                  </div>
+
+                  <div className="border-t border-slate-100 pt-3 space-y-3">
+                    <h4 className="font-bold text-slate-800 uppercase tracking-wide text-[10px]">Identitas Penandatangan Laporan</h4>
+                    
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="block font-bold text-slate-600 mb-1">Kota Penandatanganan</label>
+                        <input 
+                          type="text"
+                          className="w-full border border-slate-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                          value={printConfig.kotaTtd}
+                          onChange={(e) => setPrintConfig({ ...printConfig, kotaTtd: e.target.value })}
+                        />
+                      </div>
+                      <div>
+                        <label className="block font-bold text-slate-600 mb-1">Tanggal Tanda Tangan</label>
+                        <input 
+                          type="date"
+                          className="w-full border border-slate-300 rounded-lg px-3 py-2 font-mono focus:outline-none focus:ring-1 focus:ring-amber-500"
+                          value={printConfig.tanggalTtd}
+                          onChange={(e) => setPrintConfig({ ...printConfig, tanggalTtd: e.target.value })}
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block font-bold text-slate-600 mb-1">Nama Lengkap Pengawas Sekolah Binaan</label>
+                      <input 
+                        type="text"
+                        className="w-full border border-slate-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                        value={printConfig.namaPengawas}
+                        onChange={(e) => setPrintConfig({ ...printConfig, namaPengawas: e.target.value })}
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block font-bold text-slate-600 mb-1">NIP Pengawas Resmi</label>
+                      <input 
+                        type="text"
+                        className="w-full border border-slate-300 rounded-lg px-3 py-2 font-mono focus:outline-none focus:ring-1 focus:ring-amber-500"
+                        value={printConfig.nipPengawas}
+                        onChange={(e) => setPrintConfig({ ...printConfig, nipPengawas: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Footer Modal Aksi Print */}
+                <div className="bg-slate-50 p-4 border-t border-slate-200 flex justify-end space-x-2">
+                  <button 
+                    onClick={() => setIsPrintModalOpen(false)}
+                    className="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-2 rounded-lg"
+                  >
+                    Batal
+                  </button>
+                  <button 
+                    onClick={() => {
+                      setIsPrintModalOpen(false);
+                      setTimeout(() => {
+                        window.print();
+                      }, 200);
+                    }}
+                    className="bg-amber-500 hover:bg-amber-600 text-white font-bold px-5 py-2 rounded-lg flex items-center space-x-1.5 shadow"
+                  >
+                    <i className="fa-solid fa-file-pdf"></i>
+                    <span>Cetak Sekarang (PDF/Kertas)</span>
+                  </button>
+                </div>
+
               </div>
             </div>
           )}
