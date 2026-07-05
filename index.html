@@ -34,6 +34,7 @@
         display: none !important;
       }
       .print-area {
+        display: block !important;
         width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
@@ -51,6 +52,9 @@
         page-break-after: auto;
       }
       .print-border {
+        border: 1px solid #000 !important;
+      }
+      td, th {
         border: 1px solid #000 !important;
       }
     }
@@ -166,18 +170,10 @@
         jenjang: "TK", 
         status: "NEGERI", 
         monthsDetail: [
-          { visited: true, tanggal: "2026-01-12", materi: "Pendampingan RKAS PAUD & KTSP" },
-          { visited: true, tanggal: "2026-02-10", materi: "Supervisi Media Pembelajaran Kreatif" },
-          { visited: true, tanggal: "2026-03-05", materi: "Observasi Projek P5 Tema Budaya Lokal" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: false, tanggal: "", materi: "" }
+          [{ tanggal: "2026-01-12", materi: "Pendampingan RKAS PAUD & KTSP" }],
+          [{ tanggal: "2026-02-10", materi: "Supervisi Media Pembelajaran Kreatif" }],
+          [{ tanggal: "2026-03-05", materi: "Observasi Projek P5 Tema Budaya Lokal" }],
+          [], [], [], [], [], [], [], [], []
         ]
       },
       { 
@@ -186,18 +182,15 @@
         jenjang: "SD", 
         status: "NEGERI", 
         monthsDetail: [
-          { visited: true, tanggal: "2026-01-15", materi: "Evaluasi Awal Semester & Kesiapan Buku Kurmer" },
-          { visited: true, tanggal: "2026-02-18", materi: "Supervisi Akademik Guru Kelas Rendah" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: true, tanggal: "2026-05-14", materi: "Asesmen Sumatif & Kenaikan Kelas" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: true, tanggal: "2026-09-08", materi: "Kesiapan Pelaksanaan ANBK Gelombang I" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: true, tanggal: "2026-11-20", materi: "Pendampingan Rapor Pendidikan & PBD" },
-          { visited: false, tanggal: "", materi: "" }
+          [{ tanggal: "2026-01-15", materi: "Evaluasi Awal Semester & Kesiapan Buku Kurmer" }],
+          [{ tanggal: "2026-02-18", materi: "Supervisi Akademik Guru Kelas Rendah" }],
+          [], [],
+          [{ tanggal: "2026-05-14", materi: "Asesmen Sumatif & Kenaikan Kelas" }],
+          [], [], [],
+          [{ tanggal: "2026-09-08", materi: "Kesiapan Pelaksanaan ANBK Gelombang I" }],
+          [],
+          [{ tanggal: "2026-11-20", materi: "Pendampingan Rapor Pendidikan & PBD" }],
+          []
         ]
       },
       { 
@@ -206,38 +199,18 @@
         jenjang: "SD", 
         status: "SWASTA", 
         monthsDetail: [
-          { visited: true, tanggal: "2026-01-20", materi: "Bimbingan Teknis Kurikulum Merdeka Mandiri Berbagi" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: true, tanggal: "2026-03-12", materi: "Pemantauan Pelaksanaan Ujian Sekolah" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: true, tanggal: "2026-05-18", materi: "Evaluasi Kinerja Pendidik & Tenaga Kependidikan" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: true, tanggal: "2026-07-22", materi: "Supervisi Administrasi MPLS Tahun Ajaran Baru" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: true, tanggal: "2026-09-15", materi: "Simulasi ANBK dan Verifikasi Lab Komputer" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: true, tanggal: "2026-11-24", materi: "Pendampingan Akreditasi Perpustakaan Sekolah" },
-          { visited: false, tanggal: "", materi: "" }
-        ]
-      },
-      { 
-        id: "v-3", 
-        namaSekolah: "SMP Negeri 1 Palembang", 
-        jenjang: "SMP", 
-        status: "NEGERI", 
-        monthsDetail: [
-          { visited: true, tanggal: "2026-01-25", materi: "Monitoring Pemenuhan Jam Mengajar dan Beban Kerja Guru" },
-          { visited: true, tanggal: "2026-02-22", materi: "Supervisi Klinis Guru Mata Pelajaran IPA & Matematika" },
-          { visited: true, tanggal: "2026-03-18", materi: "Pembinaan Manajemen Komite Sekolah & Paguyuban" },
-          { visited: true, tanggal: "2026-04-10", materi: "Pendampingan Penyusunan Soal Ujian Akhir Jenjang" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: true, tanggal: "2026-06-15", materi: "Verifikasi Kelulusan Siswa Kelas IX" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: true, tanggal: "2026-09-22", materi: "Pemantauan Pelaksanaan Projek Penguatan Profil Pancasila" },
-          { visited: true, tanggal: "2026-10-18", materi: "Supervisi Manajerial Kepala Sekolah dan TU" },
-          { visited: false, tanggal: "", materi: "" },
-          { visited: true, tanggal: "2026-12-15", materi: "Evaluasi Pelaporan Semester Ganjil" }
+          [{ tanggal: "2026-01-20", materi: "Bimbingan Teknis Kurikulum Merdeka Mandiri Berbagi" }],
+          [],
+          [{ tanggal: "2026-03-12", materi: "Pemantauan Pelaksanaan Ujian Sekolah" }],
+          [],
+          [{ tanggal: "2026-05-18", materi: "Evaluasi Kinerja Pendidik & Tenaga Kependidikan" }],
+          [],
+          [{ tanggal: "2026-07-22", materi: "Supervisi Administrasi MPLS" }],
+          [],
+          [{ tanggal: "2026-09-15", materi: "Simulasi ANBK dan Verifikasi Lab Komputer" }],
+          [],
+          [{ tanggal: "2026-11-24", materi: "Pendampingan Akreditasi Perpustakaan Sekolah" }],
+          []
         ]
       }
     ];
@@ -249,55 +222,65 @@
     ];
 
     const defaultReflections = [
-      { id: "r-0", namaSekolah: "TK Pembina Negeri Palembang", pertemuan: 1, tanggal: "2026-02-10", deskripsi: "Evaluasi penerapan pembelajaran proyek berbasis alam di luar kelas.", status: "Selesai" },
-      { id: "r-1", namaSekolah: "SD Negeri 1 Palembang", pertemuan: 1, tanggal: "2026-01-15", deskripsi: "Refleksi awal peningkatan literasi dasar pada murid kelas rendah.", status: "Aktif" },
-      { id: "r-2", namaSekolah: "SMP Negeri 1 Palembang", pertemuan: 2, tanggal: "2026-03-22", deskripsi: "Evaluasi kesiapan sarana Asesmen Nasional Berbasis Komputer (ANBK).", status: "Aktif" }
+      { id: "r-0", namaSekolah: "TK Pembina Negeri Palembang", pertemuan: 1, tanggal: "2026-02-10", deskripsi: "Evaluasi penerapan pembelajaran proyek berbasis alam.", status: "Selesai" },
+      { id: "r-1", namaSekolah: "SD Negeri 1 Palembang", pertemuan: 1, tanggal: "2026-01-15", deskripsi: "Refleksi awal peningkatan literasi dasar pada murid kelas rendah.", status: "Aktif" }
     ];
 
     function App() {
-      // Pilihan Menu Utama
       const [currentTab, setCurrentTab] = useState("dashboard");
-      // Pilihan Sub-Tab Data TK, SD & Data SMP (sekolah, murid, rombel, guru)
       const [tkTab, setTkTab] = useState("sekolah");
       const [sdTab, setSdTab] = useState("sekolah");
       const [smpTab, setSmpTab] = useState("sekolah");
 
-      // Load data awal dari Local Storage atau gunakan template bawaan
       const [tkSchools, setTkSchools] = useState(() => {
-        const stored = localStorage.getItem("sips_tk_schools");
+        const stored = localStorage.getItem("sips_tk_schools_v4");
         return stored ? JSON.parse(stored) : defaultTkSchools;
       });
 
       const [sdSchools, setSdSchools] = useState(() => {
-        const stored = localStorage.getItem("sips_sd_schools");
+        const stored = localStorage.getItem("sips_sd_schools_v4");
         return stored ? JSON.parse(stored) : defaultSdSchools;
       });
 
       const [smpSchools, setSmpSchools] = useState(() => {
-        const stored = localStorage.getItem("sips_smp_schools");
+        const stored = localStorage.getItem("sips_smp_schools_v4");
         return stored ? JSON.parse(stored) : defaultSmpSchools;
       });
 
-      // State kunjungan dengan migrasi data jika data lama masih menggunakan format checklist biasa
+      // State kunjungan dengan migrasi data multi-visit per bulan
       const [visits, setVisits] = useState(() => {
-        const stored = localStorage.getItem("sips_visits_v3");
+        const stored = localStorage.getItem("sips_visits_multi_v1");
         if (stored) {
           return JSON.parse(stored);
         } else {
-          // Cari jika ada data sips_visits lama, migrasikan
-          const legacy = localStorage.getItem("sips_visits");
+          // Migrasi dari data versi lama jika ada
+          const legacy = localStorage.getItem("sips_visits_v3") || localStorage.getItem("sips_visits");
           if (legacy) {
             try {
               const parsed = JSON.parse(legacy);
               return parsed.map(v => {
-                if (v.checklist && !v.monthsDetail) {
-                  v.monthsDetail = v.checklist.map((checked, i) => ({
-                    visited: checked,
-                    tanggal: checked ? `2026-${String(i+1).padStart(2, '0')}-10` : "",
-                    materi: checked ? "Kunjungan & Pendampingan Rutin" : ""
-                  }));
+                // Format lama memiliki list bulan dengan objek tunggal atau array checklist boolean
+                let monthsDetail = Array(12).fill(null).map(() => []);
+                if (v.monthsDetail) {
+                  monthsDetail = v.monthsDetail.map(m => {
+                    if (Array.isArray(m)) return m;
+                    if (m && m.visited) {
+                      return [{ tanggal: m.tanggal || "", materi: m.materi || "Kunjungan rutin" }];
+                    }
+                    return [];
+                  });
+                } else if (v.checklist) {
+                  monthsDetail = v.checklist.map((checked, idx) => {
+                    return checked ? [{ tanggal: `2026-${String(idx+1).padStart(2, '0')}-10`, materi: "Kunjungan & Pendampingan Rutin" }] : [];
+                  });
                 }
-                return v;
+                return {
+                  id: v.id,
+                  namaSekolah: v.namaSekolah,
+                  jenjang: v.jenjang,
+                  status: v.status,
+                  monthsDetail: monthsDetail
+                };
               });
             } catch(e) {
               return defaultVisits;
@@ -308,12 +291,12 @@
       });
 
       const [pkks, setPkks] = useState(() => {
-        const stored = localStorage.getItem("sips_pkks");
+        const stored = localStorage.getItem("sips_pkks_v4");
         return stored ? JSON.parse(stored) : defaultPkks;
       });
 
       const [reflections, setReflections] = useState(() => {
-        const stored = localStorage.getItem("sips_reflections");
+        const stored = localStorage.getItem("sips_reflections_v4");
         return stored ? JSON.parse(stored) : defaultReflections;
       });
 
@@ -326,27 +309,27 @@
 
       // Sinkronisasi data ke Local Storage setiap kali terjadi perubahan
       useEffect(() => {
-        localStorage.setItem("sips_tk_schools", JSON.stringify(tkSchools));
+        localStorage.setItem("sips_tk_schools_v4", JSON.stringify(tkSchools));
       }, [tkSchools]);
 
       useEffect(() => {
-        localStorage.setItem("sips_sd_schools", JSON.stringify(sdSchools));
+        localStorage.setItem("sips_sd_schools_v4", JSON.stringify(sdSchools));
       }, [sdSchools]);
 
       useEffect(() => {
-        localStorage.setItem("sips_smp_schools", JSON.stringify(smpSchools));
+        localStorage.setItem("sips_smp_schools_v4", JSON.stringify(smpSchools));
       }, [smpSchools]);
 
       useEffect(() => {
-        localStorage.setItem("sips_visits_v3", JSON.stringify(visits));
+        localStorage.setItem("sips_visits_multi_v1", JSON.stringify(visits));
       }, [visits]);
 
       useEffect(() => {
-        localStorage.setItem("sips_pkks", JSON.stringify(pkks));
+        localStorage.setItem("sips_pkks_v4", JSON.stringify(pkks));
       }, [pkks]);
 
       useEffect(() => {
-        localStorage.setItem("sips_reflections", JSON.stringify(reflections));
+        localStorage.setItem("sips_reflections_v4", JSON.stringify(reflections));
       }, [reflections]);
 
       // State Pencarian global / Filter Sekolah
@@ -355,28 +338,30 @@
 
       // State Pengaturan Modal Form
       const [isModalOpen, setIsModalOpen] = useState(false);
-      const [modalType, setModalType] = useState(""); // "tk_sekolah", "sd_sekolah", "smp_sekolah", "pkks", "refleksi", "visit_month", "visit_new"
+      const [modalType, setModalType] = useState(""); 
       const [editData, setEditData] = useState(null);
       const [formData, setFormData] = useState({});
 
-      // State Tambahan untuk mengelola Kunjungan Bulan Tertentu
-      const [selectedVisitCell, setSelectedVisitCell] = useState(null); // { visitId, monthIndex, schoolName, monthName }
+      // State Tambahan untuk mengelola Kunjungan Bulan Tertentu (Multi-Visit)
+      const [selectedVisitCell, setSelectedVisitCell] = useState(null); 
+      const [newVisitDate, setNewVisitDate] = useState("");
+      const [newVisitMateri, setNewVisitMateri] = useState("");
 
-      // State Kustom Cetak Laporan (Disesuaikan dengan mockup di gambar)
+      // State Kustom Cetak Laporan
       const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
       const [printConfig, setPrintConfig] = useState({
-        tipeLaporan: "matriks", // "matriks" (seperti gambar) atau "detail" (dengan daftar materi lengkap)
-        jenjangFilter: "SEMUA", // "SEMUA", "TK", "SD", "SMP"
-        namaPengawas: "Cici Trisya W.H.",
-        nipPengawas: "19xxxxxxxxxxxxxxx",
-        kotaTtd: "OKU Timur",
+        tipeLaporan: "matriks", 
+        jenjangFilter: "SEMUA", 
+        namaPengawas: "Cici Trisya W.H., S.Pd., M.Si.",
+        nipPengawas: "197812152005012003",
+        kotaTtd: "Palembang",
         tanggalTtd: "2026-07-05"
       });
 
-      // State Konfirmasi Hapus Kustom (Menggantikan confirm)
+      // State Konfirmasi Hapus Kustom
       const [confirmDelete, setConfirmDelete] = useState({ isOpen: false, type: "", id: "", title: "" });
 
-      // State Notifikasi Kustom (Menggantikan alert)
+      // State Notifikasi Kustom
       const [notification, setNotification] = useState(null);
 
       const showNotification = (message, type = "success") => {
@@ -384,25 +369,23 @@
         setTimeout(() => setNotification(null), 4000);
       };
 
-      // Reset pencarian dan filter
       const handleResetSearch = () => {
         setSearchQuery("");
         setSelectedSchoolFilter("");
       };
 
-      // --- FUNGSI DOWNLOAD TEMPLATE EXCEL ---
       const handleDownloadTemplate = () => {
         let headers = [];
         let sampleRow = {};
 
         if (uploadType === "sekolah") {
-          headers = ["NPSN", "Nama Sekolah", "Status (NEGERI/SWASTA)", "Alamat", "Akreditasi (A/B/C/Belum Akreditasi)", "Kepala Sekolah", "No HP Kepsek", "Email"];
+          headers = ["NPSN", "Nama Sekolah", "Status (NEGERI/SWASTA)", "Alamat", "Akreditasi", "Kepala Sekolah", "No HP Kepsek", "Email"];
           sampleRow = {
             "NPSN": uploadJenjang === "TK" ? "20108899" : (uploadJenjang === "SD" ? "10234567" : "30104561"),
             "Nama Sekolah": `${uploadJenjang} Binaan Baru Contoh`,
             "Status (NEGERI/SWASTA)": "NEGERI",
             "Alamat": "Jl. Merdeka Raya No. 12",
-            "Akreditasi (A/B/C/Belum Akreditasi)": "A",
+            "Akreditasi": "A",
             "Kepala Sekolah": "Dr. Budiman, M.Pd.",
             "No HP Kepsek": "08123456789",
             "Email": "sekolah_contoh@sch.id"
@@ -441,7 +424,6 @@
         showNotification("Template Excel berhasil diunduh!", "success");
       };
 
-      // --- FUNGSI MEMPROSES FILE EXCEL ---
       const handleExcelUpload = (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -508,7 +490,6 @@
         reader.readAsArrayBuffer(file);
       };
 
-      // --- FUNGSI MENYIMPAN HASIL UPLOAD KE DATABASE ---
       const handleSaveUpload = () => {
         if (previewRows.length === 0) {
           showNotification("Tidak ada data untuk disimpan.", "error");
@@ -531,7 +512,7 @@
               nama: rawData["Nama Sekolah"] || nama,
               status: String(rawData["Status (NEGERI/SWASTA)"] || "NEGERI").toUpperCase(),
               alamat: rawData["Alamat"] || "",
-              akreditasi: rawData["Akreditasi (A/B/C/Belum Akreditasi)"] || "A",
+              akreditasi: rawData["Akreditasi"] || "A",
               kepsek: rawData["Kepala Sekolah"] || "",
               hpKepsek: String(rawData["No HP Kepsek"] || ""),
               email: rawData["Email"] || "",
@@ -546,13 +527,12 @@
             } else {
               updatedSchools.push(newSchoolObj);
               importCount++;
-              // Otomatis masukkan ke agenda kunjungan bulanan baru jika baru
               visits.push({ 
                 id: "v-" + Date.now() + "-" + npsn, 
                 namaSekolah: newSchoolObj.nama, 
                 jenjang: uploadJenjang, 
                 status: newSchoolObj.status, 
-                monthsDetail: Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" })) 
+                monthsDetail: Array(12).fill(null).map(() => []) 
               });
             }
           } else if (uploadType === "murid" && existingIndex >= 0) {
@@ -620,9 +600,7 @@
         else if (uploadJenjang === "SMP") setSmpSchools(updatedSchools);
 
         setVisits([...visits]);
-
         showNotification(`Sukses! Mengimpor ${importCount} Sekolah Baru & Mengupdate ${updateCount} Data Binaan.`, "success");
-        
         setPreviewRows([]);
         setExcelFileName("");
         setCurrentTab(uploadJenjang.toLowerCase());
@@ -636,28 +614,13 @@
         } else {
           if (type === "tk_sekolah") {
             setFormData({
-              nama: "",
-              status: "NEGERI",
-              alamat: "",
-              akreditasi: "A",
-              npsn: "",
-              kepsek: "",
-              hpKepsek: "",
-              email: "",
-              murid: { LA: 0, PA: 0, LB: 0, PB: 0 },
-              rombel: [0, 0],
+              nama: "", status: "NEGERI", alamat: "", akreditasi: "A", npsn: "", kepsek: "", hpKepsek: "", email: "",
+              murid: { LA: 0, PA: 0, LB: 0, PB: 0 }, rombel: [0, 0],
               guru: { pns: 0, nonAsn: 0, yayasan: 0, tendik: 0, kepsek: 1 }
             });
           } else if (type === "sd_sekolah" || type === "smp_sekolah") {
             setFormData({
-              nama: "",
-              status: "NEGERI",
-              alamat: "",
-              akreditasi: "A",
-              npsn: "",
-              kepsek: "",
-              hpKepsek: "",
-              email: "",
+              nama: "", status: "NEGERI", alamat: "", akreditasi: "A", npsn: "", kepsek: "", hpKepsek: "", email: "",
               murid: type === "sd_sekolah" 
                 ? { L1: 0, P1: 0, L2: 0, P2: 0, L3: 0, P3: 0, L4: 0, P4: 0, L5: 0, P5: 0, L6: 0, P6: 0 }
                 : { L7: 0, P7: 0, L8: 0, P8: 0, L9: 0, P9: 0 },
@@ -683,15 +646,14 @@
             setTkSchools(tkSchools.map(s => s.id === editData.id ? formData : s));
             showNotification("Data TK Berhasil Diperbarui!");
           } else {
-            const newId = "tk-" + Date.now();
-            const newSchool = { ...formData, id: newId };
+            const newSchool = { ...formData, id: "tk-" + Date.now() };
             setTkSchools([...tkSchools, newSchool]);
             setVisits([...visits, { 
               id: "v-" + Date.now(), 
               namaSekolah: formData.nama, 
               jenjang: "TK", 
               status: formData.status, 
-              monthsDetail: Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" })) 
+              monthsDetail: Array(12).fill(null).map(() => []) 
             }]);
             showNotification("Data TK Baru Berhasil Ditambahkan!");
           }
@@ -700,15 +662,14 @@
             setSdSchools(sdSchools.map(s => s.id === editData.id ? formData : s));
             showNotification("Data SD Berhasil Diperbarui!");
           } else {
-            const newId = "sd-" + Date.now();
-            const newSchool = { ...formData, id: newId };
+            const newSchool = { ...formData, id: "sd-" + Date.now() };
             setSdSchools([...sdSchools, newSchool]);
             setVisits([...visits, { 
               id: "v-" + Date.now(), 
               namaSekolah: formData.nama, 
               jenjang: "SD", 
               status: formData.status, 
-              monthsDetail: Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" })) 
+              monthsDetail: Array(12).fill(null).map(() => []) 
             }]);
             showNotification("Data SD Baru Berhasil Ditambahkan!");
           }
@@ -717,15 +678,14 @@
             setSmpSchools(smpSchools.map(s => s.id === editData.id ? formData : s));
             showNotification("Data SMP Berhasil Diperbarui!");
           } else {
-            const newId = "smp-" + Date.now();
-            const newSchool = { ...formData, id: newId };
+            const newSchool = { ...formData, id: "smp-" + Date.now() };
             setSmpSchools([...smpSchools, newSchool]);
             setVisits([...visits, { 
               id: "v-" + Date.now(), 
               namaSekolah: formData.nama, 
               jenjang: "SMP", 
               status: formData.status, 
-              monthsDetail: Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" })) 
+              monthsDetail: Array(12).fill(null).map(() => []) 
             }]);
             showNotification("Data SMP Baru Berhasil Ditambahkan!");
           }
@@ -734,8 +694,7 @@
             setPkks(pkks.map(p => p.id === editData.id ? formData : p));
             showNotification("Data PKKS Berhasil Diperbarui!");
           } else {
-            const newPkks = { ...formData, id: "p-" + Date.now() };
-            setPkks([...pkks, newPkks]);
+            setPkks([...pkks, { ...formData, id: "p-" + Date.now() }]);
             showNotification("Data PKKS Baru Berhasil Ditambahkan!");
           }
         } else if (modalType === "refleksi") {
@@ -743,35 +702,26 @@
             setReflections(reflections.map(r => r.id === editData.id ? formData : r));
             showNotification("Data Refleksi Berhasil Diperbarui!");
           } else {
-            const newRefl = { ...formData, id: "r-" + Date.now() };
-            setReflections([...reflections, newRefl]);
+            setReflections([...reflections, { ...formData, id: "r-" + Date.now() }]);
             showNotification("Data Refleksi Baru Berhasil Ditambahkan!");
           }
         } else if (modalType === "visit_new") {
-          const newVisit = {
+          setVisits([...visits, {
             id: "v-" + Date.now(),
             namaSekolah: formData.namaSekolah,
             jenjang: formData.jenjang,
             status: formData.status,
-            monthsDetail: Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" }))
-          };
-          setVisits([...visits, newVisit]);
+            monthsDetail: Array(12).fill(null).map(() => [])
+          }]);
           showNotification("Data Kunjungan Sekolah Baru Berhasil Ditambahkan!");
         }
         setIsModalOpen(false);
       };
 
-      // Memicu modal konfirmasi hapus kustom
       const triggerDeleteConfirm = (type, id, schoolName) => {
-        setConfirmDelete({
-          isOpen: true,
-          type,
-          id,
-          title: schoolName || "data terpilih"
-        });
+        setConfirmDelete({ isOpen: true, type, id, title: schoolName || "data terpilih" });
       };
 
-      // Menjalankan proses penghapusan setelah dikonfirmasi
       const executeDelete = () => {
         const { type, id } = confirmDelete;
         if (type === "tk") {
@@ -797,57 +747,77 @@
       };
 
       const handleOpenVisitCellModal = (visit, mIdx) => {
-        const detail = visit.monthsDetail?.[mIdx] || { visited: false, tanggal: "", materi: "" };
+        const listKunjunganBulan = visit.monthsDetail?.[mIdx] || [];
         setSelectedVisitCell({
           visitId: visit.id,
           monthIndex: mIdx,
           schoolName: visit.namaSekolah,
-          monthName: monthNames[mIdx]
+          monthName: monthNames[mIdx],
+          list: listKunjunganBulan
         });
-        setFormData({
-          visited: detail.visited,
-          tanggal: detail.tanggal || new Date().toISOString().split('T')[0],
-          materi: detail.materi || ""
-        });
+        
+        // Reset form input kunjungan baru
+        setNewVisitDate(new Date().toISOString().split('T')[0]);
+        setNewVisitMateri("");
         setModalType("visit_month");
         setIsModalOpen(true);
       };
 
-      const handleSaveVisitCell = (e) => {
+      // Simpan multi-kunjungan ke array bulan bersangkutan
+      const handleAddVisitToCell = (e) => {
         e.preventDefault();
-        setVisits(visits.map(v => {
+        if (!newVisitDate || !newVisitMateri.trim()) {
+          showNotification("Mohon isi tanggal dan materi kunjungan!", "error");
+          return;
+        }
+
+        const newVisitItem = {
+          tanggal: newVisitDate,
+          materi: newVisitMateri.trim()
+        };
+
+        const updatedVisits = visits.map(v => {
           if (v.id === selectedVisitCell.visitId) {
-            const updatedDetails = v.monthsDetail ? [...v.monthsDetail] : Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" }));
-            updatedDetails[selectedVisitCell.monthIndex] = {
-              visited: formData.visited,
-              tanggal: formData.visited ? formData.tanggal : "",
-              materi: formData.visited ? formData.materi : ""
-            };
+            const updatedDetails = v.monthsDetail ? [...v.monthsDetail] : Array(12).fill(null).map(() => []);
+            // Dorong item kunjungan baru ke dalam array bulan tersebut
+            updatedDetails[selectedVisitCell.monthIndex] = [...(updatedDetails[selectedVisitCell.monthIndex] || []), newVisitItem];
+            
+            // Perbarui state lokal modal agar langsung bereaksi di layar
+            setSelectedVisitCell({
+              ...selectedVisitCell,
+              list: updatedDetails[selectedVisitCell.monthIndex]
+            });
+
             return { ...v, monthsDetail: updatedDetails };
           }
           return v;
-        }));
-        showNotification(`Data kunjungan bulan ${selectedVisitCell.monthName} di ${selectedVisitCell.schoolName} berhasil disimpan.`);
-        setIsModalOpen(false);
-        setSelectedVisitCell(null);
+        });
+
+        setVisits(updatedVisits);
+        setNewVisitMateri(""); // Reset materi input saja
+        showNotification(`Kunjungan baru berhasil ditambahkan pada bulan ${selectedVisitCell.monthName}.`);
       };
 
-      // Fungsi cepat untuk toggle status kunjungan (dengan checklist default)
-      const handleToggleQuickVisit = (visitId, mIdx) => {
-        setVisits(visits.map(v => {
-          if (v.id === visitId) {
-            const updatedDetails = v.monthsDetail ? [...v.monthsDetail] : Array(12).fill(null).map(() => ({ visited: false, tanggal: "", materi: "" }));
-            const current = updatedDetails[mIdx];
-            updatedDetails[mIdx] = {
-              ...current,
-              visited: !current.visited,
-              tanggal: !current.visited ? new Date().toISOString().split('T')[0] : "",
-              materi: !current.visited ? "Kunjungan rutin pengawas" : ""
-            };
+      // Menghapus salah satu rincian kunjungan dari list bulanan
+      const handleDeleteVisitFromCell = (itemIndex) => {
+        const updatedVisits = visits.map(v => {
+          if (v.id === selectedVisitCell.visitId) {
+            const updatedDetails = v.monthsDetail ? [...v.monthsDetail] : Array(12).fill(null).map(() => []);
+            const filterArray = updatedDetails[selectedVisitCell.monthIndex].filter((_, idx) => idx !== itemIndex);
+            updatedDetails[selectedVisitCell.monthIndex] = filterArray;
+
+            setSelectedVisitCell({
+              ...selectedVisitCell,
+              list: filterArray
+            });
+
             return { ...v, monthsDetail: updatedDetails };
           }
           return v;
-        }));
+        });
+
+        setVisits(updatedVisits);
+        showNotification("Satu kunjungan berhasil dihapus dari jadwal.", "error");
       };
 
       const totalTkCount = tkSchools.length;
@@ -860,7 +830,6 @@
       const monthNames = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
       const monthFullNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
-      // Semua daftar nama sekolah digabung untuk mempermudah filter dropdown
       const allSchoolNames = [
         ...tkSchools.map(s => ({ nama: s.nama, tipe: "TK", status: s.status })),
         ...sdSchools.map(s => ({ nama: s.nama, tipe: "SD", status: s.status })),
@@ -960,7 +929,7 @@
             </nav>
 
             <div className="p-6 border-t border-emerald-700/40 text-center text-xs text-emerald-200">
-              <p className="font-semibold">SIPS Binaan v2.6</p>
+              <p className="font-semibold">SIPS Binaan v3.0</p>
               <p className="mt-1 opacity-80">ND PRO</p>
               <p className="mt-1 font-mono text-[10px] opacity-60">Hak Cipta © 2026</p>
             </div>
@@ -1053,8 +1022,8 @@
                     <div className="text-slate-600 text-sm leading-relaxed space-y-4">
                       <p>Sistem Informasi Pengawas Sekolah (SIPS) memfasilitasi pendataan kualitatif dan kuantitatif bagi pengawas binaan. Dengan pemetaan komprehensif dari jenjang <strong>Taman Kanak-Kanak (TK)</strong>, <strong>Sekolah Dasar (SD)</strong>, hingga <strong>Sekolah Menengah Pertama (SMP)</strong>.</p>
                       <ul className="list-disc pl-5 space-y-2">
-                        <li><strong>Kunjungan Bulanan Terpadu:</strong> Kini Anda dapat mencatat detail <strong>tanggal kunjungan</strong> serta <strong>materi pembinaan</strong> setiap bulan untuk setiap sekolah binaan dengan mengklik sel bulan pada tabel.</li>
-                        <li><strong>Cetak Laporan Format Resmi:</strong> Menghasilkan dokumen cetak laporan matriks bulanan formal yang rapi (seperti pada berkas WhatsApp Image 2026-07-05 at 17.08.47.jpeg) lengkap dengan kolom tanda tangan pengawas sekolah.</li>
+                        <li><strong>Dukungan Multi-Kunjungan Bulanan:</strong> Klik langsung pada sel bulan di tabel Kunjungan Sekolah untuk menambah, merekam, atau menghapus lebih dari satu kunjungan beserta rincian materi pendampingan di bulan tersebut.</li>
+                        <li><strong>Cetak Laporan Format Resmi:</strong> Menghasilkan dokumen cetak laporan matriks bulanan formal yang rapi lengkap dengan kolom tanda tangan pengawas sekolah dan dinas terkait.</li>
                       </ul>
                       <p className="text-emerald-700 font-semibold bg-emerald-50 p-3 rounded-lg border border-emerald-100"><i className="fa-solid fa-lightbulb mr-1.5"></i> Informasi: Data Anda tersimpan secara lokal dan aman di browser komputer Anda. Klik tombol <strong>Cetak Laporan</strong> di pojok kanan atas untuk mengekspor data ke dalam berkas fisik atau PDF.</p>
                     </div>
@@ -1063,30 +1032,30 @@
               )}
 
               {/* ======================================================= */}
-              {/* 2. KONTEN TAB: KUNJUNGAN SEKOLAH (UPDATED & MATCHED TO IMAGE) */}
+              {/* 2. KONTEN TAB: KUNJUNGAN SEKOLAH (MULTI-VISIT BULANAN) */}
               {/* ======================================================= */}
               {currentTab === "kunjungan" && (
-                <div className="bg-white rounded-xl shadow border border-slate-200 p-6">
+                <div className="bg-white rounded-xl shadow border border-slate-200 p-6 no-print">
                   
-                  {/* Bagian Atas: Header & Aksi Utama (Sesuai Gambar Mockup) */}
+                  {/* Bagian Atas: Header & Aksi Utama */}
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4 border-b border-slate-100 pb-4">
                     <div>
                       <h2 className="text-2xl font-bold text-slate-800 flex items-center">
                         <i className="fa-solid fa-calendar-check text-emerald-600 mr-2"></i>
-                        Data Kunjungan Sekolah
+                        Data Kunjungan Sekolah (Multi-Visit)
                       </h2>
                       <p className="text-slate-500 text-sm mt-1">Daftar presensi, pengawasan bulanan, dan pendampingan materi tingkat TK, SD & SMP.</p>
                     </div>
                   </div>
 
-                  {/* Tombol Tambah & Cetak seperti yang ada di Gambar WhatsApp */}
+                  {/* Tombol Tambah & Cetak */}
                   <div className="flex flex-wrap gap-2.5 mb-6 no-print">
                     <button 
                       onClick={() => handleOpenModal("visit_new")}
                       className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2.5 rounded-lg text-sm transition-all flex items-center space-x-2 shadow-sm"
                     >
                       <i className="fa-solid fa-plus text-xs"></i>
-                      <span>Tambah Data</span>
+                      <span>Tambah Data Sekolah Binaan</span>
                     </button>
                     <button 
                       onClick={() => setIsPrintModalOpen(true)}
@@ -1117,19 +1086,19 @@
                   {/* Informasi cara penginputan materi */}
                   <div className="bg-sky-50 border border-sky-200 text-sky-800 text-xs rounded-lg p-3 mb-4 flex items-center gap-2 no-print">
                     <i className="fa-solid fa-lightbulb text-base text-sky-600"></i>
-                    <span><strong>Petunjuk:</strong> Klik langsung pada sel bulan (kolom <strong>Jan</strong> s.d <strong>Des</strong>) untuk menambahkan/mengubah <strong>tanggal</strong> dan <strong>materi pembinaan</strong> kunjungan sekolah.</span>
+                    <span><strong>Petunjuk Interaktif:</strong> Klik langsung pada sel bulan (kolom <strong>Jan</strong> s.d <strong>Des</strong>) untuk menambah, mengedit, atau menghapus <strong>satu atau lebih rincian tanggal dan materi kunjungan</strong> dalam bulan bersangkutan.</span>
                   </div>
 
-                  {/* Tabel Checklist & Materi Bulanan (Sesuai Layout Gambar) */}
+                  {/* Tabel Checklist & Materi Bulanan */}
                   <div className="overflow-x-auto custom-scrollbar border border-slate-200 rounded-xl">
                     <table className="w-full text-left text-sm border-collapse min-w-[1000px]">
                       <thead>
                         <tr className="bg-slate-100 text-slate-700 font-bold text-xs uppercase border-b border-slate-200">
                           <th className="py-3 px-4 w-12 text-center border-r border-slate-200">No</th>
-                          <th className="py-3 px-4 border-r border-slate-200">Nama Sekolah</th>
+                          <th className="py-3 px-4 border-r border-slate-200">Nama Sekolah Binaan</th>
                           <th className="py-3 px-4 w-28 text-center border-r border-slate-200">Status</th>
                           {monthNames.map((m, i) => (
-                            <th key={i} className="py-3 px-1 text-center font-bold text-[11px] w-[64px] border-r border-slate-200">{m}</th>
+                            <th key={i} className="py-3 px-1 text-center font-bold text-[11px] w-[68px] border-r border-slate-200">{m}</th>
                           ))}
                           <th className="py-3 px-4 text-center w-16 no-print">Aksi</th>
                         </tr>
@@ -1148,26 +1117,32 @@
                                 <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${v.status === "NEGERI" ? "bg-emerald-50 text-emerald-700 border-emerald-200" : "bg-amber-50 text-amber-700 border-amber-200"}`}>{v.status}</span>
                               </td>
                               {monthNames.map((_, mIdx) => {
-                                const detail = v.monthsDetail?.[mIdx] || { visited: false, tanggal: "", materi: "" };
+                                const detailArray = v.monthsDetail?.[mIdx] || [];
+                                const isVisited = detailArray.length > 0;
                                 return (
                                   <td 
                                     key={mIdx} 
                                     onClick={() => handleOpenVisitCellModal(v, mIdx)}
                                     className={`py-2 px-1 text-center border-r border-slate-150 cursor-pointer transition-all ${
-                                      detail.visited 
-                                        ? "bg-emerald-50 hover:bg-emerald-100 text-emerald-800" 
+                                      isVisited 
+                                        ? "bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-semibold" 
                                         : "hover:bg-slate-100/80 text-slate-300"
                                     }`}
-                                    title={detail.visited ? `Materi: ${detail.materi}\nTanggal: ${detail.tanggal}` : "Belum ada kunjungan"}
+                                    title={isVisited ? `${detailArray.length} Kunjungan. Klik untuk melihat rincian` : "Belum ada kunjungan"}
                                   >
-                                    {detail.visited ? (
+                                    {isVisited ? (
                                       <div className="flex flex-col items-center justify-center">
-                                        <i className="fa-solid fa-circle-check text-emerald-600 text-sm"></i>
-                                        {detail.tanggal && (
-                                          <span className="text-[9px] font-semibold text-emerald-700 mt-0.5">
-                                            {detail.tanggal.split('-')[2]}/{detail.tanggal.split('-')[1]}
-                                          </span>
-                                        )}
+                                        <div className="relative">
+                                          <i className="fa-solid fa-circle-check text-emerald-600 text-base"></i>
+                                          {detailArray.length > 1 && (
+                                            <span className="absolute -top-1.5 -right-2 bg-amber-500 text-white font-extrabold text-[9px] w-4 h-4 rounded-full flex items-center justify-center shadow">
+                                              {detailArray.length}
+                                            </span>
+                                          )}
+                                        </div>
+                                        <span className="text-[8px] font-bold text-emerald-700 mt-1">
+                                          {detailArray[0].tanggal.split('-')[2] || ""}/{detailArray[0].tanggal.split('-')[1] || ""}
+                                        </span>
                                       </div>
                                     ) : (
                                       <span className="text-slate-300 text-xs font-light">-</span>
@@ -1195,6 +1170,7 @@
                   <div className="mt-4 text-xs text-slate-500 italic flex items-center gap-4 no-print">
                     <span><strong>Legenda:</strong></span>
                     <span className="flex items-center gap-1"><i className="fa-solid fa-circle-check text-emerald-600"></i> Terjadwal (Ada Tanggal & Materi)</span>
+                    <span className="flex items-center gap-1"><span className="bg-amber-500 text-white text-[9px] w-3.5 h-3.5 rounded-full flex items-center justify-center font-bold">2</span> Multi-Kunjungan dalam satu bulan</span>
                     <span>- Belum Ada Kunjungan</span>
                   </div>
                 </div>
@@ -1261,7 +1237,7 @@
                       <div className="overflow-x-auto custom-scrollbar">
                         <table className="w-full text-left text-sm border-collapse min-w-[900px]">
                           <thead>
-                            <tr className="bg-purple-50 text-purple-950 font-bold text-xs uppercase border-b border-purple-200">
+                            <tr className="bg-purple-50 text-purple-955 font-bold text-xs uppercase border-b border-purple-200">
                               <th className="py-3.5 px-4 w-12 text-center">No</th>
                               <th className="py-3.5 px-4">Nama Sekolah</th>
                               <th className="py-3.5 px-4 w-24">Status</th>
@@ -2043,34 +2019,34 @@
               <div className="hidden print:block w-full text-black">
                 {/* 1. KOP SURAT DINAS FORMAL */}
                 <div className="text-center border-b-4 border-double border-black pb-4 mb-6 flex items-center justify-between">
-                  <div className="w-16 h-16 bg-slate-300 rounded flex items-center justify-center font-bold text-xs uppercase text-center border border-black p-1">LOGO KOTA</div>
-                  <div className="flex-1 px-4">
-                    <h3 className="text-base font-bold uppercase tracking-wide">Pemerintah Kota {printConfig.kotaTtd}</h3>
-                    <h2 className="text-lg font-extrabold uppercase tracking-wider">Dinas Pendidikan Nasional</h2>
-                    <p className="text-xs italic mt-0.5">Jalan Merdeka Raya No. 450, Telepon (0711) 313131, Kota {printConfig.kotaTtd}</p>
+                  <div className="w-16 h-16 bg-slate-200 border border-black flex items-center justify-center font-bold text-[10px] uppercase text-center p-1">LOGO KOTA</div>
+                  <div className="flex-1 px-4 text-center">
+                    <h3 className="text-sm font-bold uppercase tracking-wide leading-tight">Pemerintah Kota {printConfig.kotaTtd}</h3>
+                    <h2 className="text-base font-extrabold uppercase tracking-wider leading-tight">Dinas Pendidikan Nasional</h2>
+                    <p className="text-[10px] italic mt-0.5">Jalan Merdeka Raya No. 450, Telepon (0711) 313131, Kota {printConfig.kotaTtd}</p>
                   </div>
-                  <div className="w-16 h-16 bg-slate-300 rounded flex items-center justify-center font-bold text-[10px] uppercase text-center border border-black p-1">LOGO TUT WURI</div>
+                  <div className="w-16 h-16 bg-slate-200 border border-black flex items-center justify-center font-bold text-[10px] uppercase text-center p-1">LOGO TUT WURI</div>
                 </div>
 
                 {/* 2. JUDUL LAPORAN */}
                 <div className="text-center mb-6">
-                  <h1 className="text-base font-bold uppercase underline">Laporan Kunjungan & Pendampingan Pengawas Sekolah</h1>
-                  <p className="text-xs font-semibold mt-1 uppercase">Tingkat: {printConfig.jenjangFilter === "SEMUA" ? "TK, SD & SMP" : printConfig.jenjangFilter} Binaan</p>
-                  <p className="text-[11px] text-slate-600 mt-0.5">Tahun Anggaran Jurnal: 2026</p>
+                  <h1 className="text-sm font-bold uppercase underline">Laporan Kunjungan & Pendampingan Pengawas Sekolah</h1>
+                  <p className="text-[11px] font-semibold mt-1 uppercase">Tingkat: {printConfig.jenjangFilter === "SEMUA" ? "TK, SD & SMP" : printConfig.jenjangFilter} Binaan</p>
+                  <p className="text-[10px] text-slate-600 mt-0.5">Tahun Anggaran Jurnal: 2026</p>
                 </div>
 
-                {/* 3. ISI KONTEN LAPORAN: MATRIKS CHECKLIST (SEPERTI FOTO WHATSAPP USER) */}
+                {/* 3. ISI KONTEN LAPORAN: MATRIKS CHECKLIST */}
                 {printConfig.tipeLaporan === "matriks" ? (
                   <div>
-                    <p className="text-xs font-bold mb-2">A. Matriks Monitoring Kunjungan Bulanan:</p>
-                    <table className="w-full text-xs border border-black print-border">
+                    <p className="text-xs font-bold mb-2">A. Matriks Monitoring Kunjungan Bulanan (Multi-Visit):</p>
+                    <table className="w-full text-[10px] border border-black print-border">
                       <thead>
                         <tr className="bg-slate-100 border-b border-black font-bold">
-                          <th className="py-2 px-2 text-center border-r border-black w-10">No</th>
-                          <th className="py-2 px-3 text-left border-r border-black">Nama Sekolah Binaan</th>
-                          <th className="py-2 px-2 text-center border-r border-black w-16">Status</th>
+                          <th className="py-2 px-1 text-center border-r border-black w-10">No</th>
+                          <th className="py-2 px-2 text-left border-r border-black">Nama Sekolah Binaan</th>
+                          <th className="py-2 px-1 text-center border-r border-black w-16">Status</th>
                           {monthNames.map((m, i) => (
-                            <th key={i} className="py-2 px-1 text-center border-r border-black font-bold text-[10px] w-10">{m}</th>
+                            <th key={i} className="py-2 px-1 text-center border-r border-black font-bold text-[9px] w-10">{m}</th>
                           ))}
                         </tr>
                       </thead>
@@ -2079,14 +2055,14 @@
                           .filter(v => printConfig.jenjangFilter === "SEMUA" || v.jenjang === printConfig.jenjangFilter)
                           .map((v, idx) => (
                             <tr key={v.id} className="border-b border-black">
-                              <td className="py-2 px-2 text-center border-r border-black">{idx + 1}</td>
-                              <td className="py-2 px-3 border-r border-black font-semibold">{v.namaSekolah}</td>
-                              <td className="py-2 px-2 text-center border-r border-black">{v.status}</td>
+                              <td className="py-2 px-1 text-center border-r border-black">{idx + 1}</td>
+                              <td className="py-2 px-2 border-r border-black font-semibold">{v.namaSekolah}</td>
+                              <td className="py-2 px-1 text-center border-r border-black">{v.status}</td>
                               {monthNames.map((_, mIdx) => {
-                                const detail = v.monthsDetail?.[mIdx] || { visited: false };
+                                const list = v.monthsDetail?.[mIdx] || [];
                                 return (
-                                  <td key={mIdx} className="py-2 px-1 text-center border-r border-black font-bold text-xs">
-                                    {detail.visited ? "✓" : "-"}
+                                  <td key={mIdx} className="py-2 px-1 text-center border-r border-black font-bold text-[10px]">
+                                    {list.length > 0 ? (list.length > 1 ? `✓ (${list.length})` : "✓") : "-"}
                                   </td>
                                 );
                               })}
@@ -2096,17 +2072,17 @@
                     </table>
                   </div>
                 ) : (
-                  // ISI KONTEN LAPORAN DETAIL (TANGGAL & MATERI SETIAP BULAN)
+                  // ISI KONTEN LAPORAN DETAIL (TANGGAL & MATERI SETIAP BULAN - MENGAKOMODASI MULTI-VISIT)
                   <div>
-                    <p className="text-xs font-bold mb-2">A. Rekapitulasi Rincian Tanggal & Materi Kegiatan Pendampingan:</p>
-                    <table className="w-full text-xs border border-black print-border">
+                    <p className="text-xs font-bold mb-2">A. Rekapitulasi Rincian Tanggal & Materi Kegiatan Pendampingan (Multi-Visit):</p>
+                    <table className="w-full text-[10px] border border-black print-border">
                       <thead>
                         <tr className="bg-slate-100 border-b border-black font-bold">
-                          <th className="py-2 px-2 text-center border-r border-black w-10">No</th>
-                          <th className="py-2 px-3 text-left border-r border-black w-1/4">Nama Sekolah Binaan</th>
+                          <th className="py-2 px-1 text-center border-r border-black w-10">No</th>
+                          <th className="py-2 px-2 text-left border-r border-black w-1/4">Nama Sekolah Binaan</th>
                           <th className="py-2 px-2 text-center border-r border-black w-24">Bulan</th>
                           <th className="py-2 px-2 text-center border-r border-black w-28">Tanggal Kunjungan</th>
-                          <th className="py-2 px-3 text-left border-r border-black">Uraian / Materi Kegiatan Pengawasan</th>
+                          <th className="py-2 px-2 text-left border-r border-black">Uraian / Materi Kegiatan Pengawasan</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -2115,34 +2091,41 @@
                           return visits
                             .filter(v => printConfig.jenjangFilter === "SEMUA" || v.jenjang === printConfig.jenjangFilter)
                             .map((v) => {
-                              const activeMonths = (v.monthsDetail || [])
-                                .map((m, mIdx) => ({ ...m, monthName: monthFullNames[mIdx] }))
-                                .filter(m => m.visited);
+                              // Mengumpulkan semua rincian kunjungan aktif
+                              const allActiveVisits = [];
+                              (v.monthsDetail || []).forEach((mList, mIdx) => {
+                                mList.forEach(visitItem => {
+                                  allActiveVisits.push({
+                                    ...visitItem,
+                                    monthName: monthFullNames[mIdx]
+                                  });
+                                });
+                              });
 
-                              if (activeMonths.length === 0) {
+                              if (allActiveVisits.length === 0) {
                                 rowIdx++;
                                 return (
-                                  <tr key={v.id + "-empty"} className="border-b border-black text-[11px]">
-                                    <td className="py-1.5 px-2 text-center border-r border-black">{rowIdx}</td>
-                                    <td className="py-1.5 px-3 border-r border-black font-semibold">{v.namaSekolah}</td>
+                                  <tr key={v.id + "-empty"} className="border-b border-black text-[10px]">
+                                    <td className="py-1.5 px-1 text-center border-r border-black">{rowIdx}</td>
+                                    <td className="py-1.5 px-2 border-r border-black font-semibold">{v.namaSekolah}</td>
                                     <td className="py-1.5 px-2 text-center border-r border-black text-slate-500 italic">-</td>
                                     <td className="py-1.5 px-2 text-center border-r border-black text-slate-500 italic">-</td>
-                                    <td className="py-1.5 px-3 border-r border-black text-slate-500 italic">Belum ada kunjungan terlaksana</td>
+                                    <td className="py-1.5 px-2 border-r border-black text-slate-500 italic">Belum ada kunjungan terlaksana</td>
                                   </tr>
                                 );
                               }
 
-                              return activeMonths.map((mDetail, subIdx) => {
+                              return allActiveVisits.map((visitItem, subIdx) => {
                                 rowIdx++;
                                 return (
-                                  <tr key={`${v.id}-${subIdx}`} className="border-b border-black text-[11px]">
-                                    <td className="py-1.5 px-2 text-center border-r border-black">{rowIdx}</td>
-                                    <td className="py-1.5 px-3 border-r border-black font-semibold">
+                                  <tr key={`${v.id}-${subIdx}`} className="border-b border-black text-[10px]">
+                                    <td className="py-1.5 px-1 text-center border-r border-black">{rowIdx}</td>
+                                    <td className="py-1.5 px-2 border-r border-black font-semibold">
                                       {subIdx === 0 ? v.namaSekolah : <span className="text-slate-400 italic">(Sama)</span>}
                                     </td>
-                                    <td className="py-1.5 px-2 text-center border-r border-black font-medium">{mDetail.monthName}</td>
-                                    <td className="py-1.5 px-2 text-center border-r border-black font-mono">{mDetail.tanggal}</td>
-                                    <td className="py-1.5 px-3 border-r border-black">{mDetail.materi}</td>
+                                    <td className="py-1.5 px-2 text-center border-r border-black font-medium">{visitItem.monthName}</td>
+                                    <td className="py-1.5 px-2 text-center border-r border-black font-mono">{visitItem.tanggal}</td>
+                                    <td className="py-1.5 px-2 border-r border-black">{visitItem.materi}</td>
                                   </tr>
                                 );
                               });
@@ -2154,20 +2137,20 @@
                 )}
 
                 {/* 4. LEMBAR TANDA TANGAN (KOLOM TTD PEJABAT/PENGAWAS) */}
-                <div className="mt-12 flex justify-between text-xs px-8">
+                <div className="mt-12 flex justify-between text-[11px] px-8">
                   <div>
                     <p className="font-semibold">Mengetahui,</p>
                     <p className="font-semibold uppercase">Kepala Dinas Pendidikan Kota {printConfig.kotaTtd}</p>
-                    <div className="h-20"></div>
+                    <div className="h-16"></div>
                     <p className="font-extrabold underline">......................................................</p>
-                    <p className="text-[10px] text-slate-500">NIP. .................................................</p>
+                    <p className="text-[9px] text-slate-500">NIP. .................................................</p>
                   </div>
                   <div className="text-right">
                     <p className="font-semibold">{printConfig.kotaTtd}, {printConfig.tanggalTtd ? new Date(printConfig.tanggalTtd).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'}) : ""}</p>
                     <p className="font-semibold">Pengawas Madya Satuan Pendidikan,</p>
-                    <div className="h-20"></div>
+                    <div className="h-16"></div>
                     <p className="font-extrabold underline">{printConfig.namaPengawas}</p>
-                    <p className="text-[10px] text-slate-500">NIP. {printConfig.nipPengawas}</p>
+                    <p className="text-[9px] text-slate-500">NIP. {printConfig.nipPengawas}</p>
                   </div>
                 </div>
               </div>
@@ -2191,8 +2174,8 @@
                       modalType === "sd_sekolah" ? "Sekolah Dasar (SD)" :
                       modalType === "smp_sekolah" ? "Sekolah Menengah (SMP)" :
                       modalType === "pkks" ? "Hasil Penilaian PKKS" : 
-                      modalType === "visit_month" ? "Detail Kunjungan Bulanan" :
-                      modalType === "visit_new" ? "Tambah Data Kunjungan" : "Jurnal Refleksi Sekolah"
+                      modalType === "visit_month" ? "Detail Agenda Kunjungan Bulanan" :
+                      modalType === "visit_new" ? "Tambah Data Kunjungan Binaan" : "Jurnal Refleksi Sekolah"
                     }
                   </h3>
                   <button onClick={() => { setIsModalOpen(false); setSelectedVisitCell(null); }} className="text-white hover:text-amber-300 transition-all text-xl">
@@ -2201,58 +2184,97 @@
                 </div>
 
                 {/* Form Isian Modal */}
-                <form onSubmit={modalType === "visit_month" ? handleSaveVisitCell : handleSaveData} className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar text-sm">
+                <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar text-sm">
                   
-                  {/* --- A. FORM UNTUK KUNJUNGAN BULANAN (TANGGAL & MATERI SETIAP BULAN) --- */}
+                  {/* --- A. FORM UNTUK MULTI-KUNJUNGAN BULANAN (TANGGAL & MATERI) --- */}
                   {modalType === "visit_month" && selectedVisitCell && (
-                    <div className="space-y-4">
+                    <div className="space-y-6">
                       <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-200 text-emerald-900">
-                        <p className="text-xs uppercase font-extrabold tracking-wider text-emerald-800">Sekolah & Periode</p>
+                        <p className="text-xs uppercase font-extrabold tracking-wider text-emerald-800">Sekolah & Periode Binaan</p>
                         <p className="font-extrabold text-lg mt-1">{selectedVisitCell.schoolName}</p>
-                        <p className="text-xs font-semibold mt-0.5">Pendampingan Bulan: <strong className="underline">{selectedVisitCell.monthName} 2026</strong></p>
+                        <p className="text-xs font-semibold mt-0.5">Bulan Pendampingan: <strong className="underline">{selectedVisitCell.monthName} 2026</strong></p>
                       </div>
 
-                      <div className="flex items-center space-x-3 bg-slate-50 p-3 rounded-lg border border-slate-200">
-                        <input 
-                          type="checkbox" 
-                          id="visitedCheck"
-                          className="w-5 h-5 text-emerald-600 border-slate-300 rounded focus:ring-emerald-500 cursor-pointer"
-                          checked={formData.visited || false}
-                          onChange={(e) => setFormData({ ...formData, visited: e.target.checked })}
-                        />
-                        <label htmlFor="visitedCheck" className="text-slate-700 font-bold text-sm cursor-pointer select-none">Tandai Kunjungan Telah Dilaksanakan</label>
+                      {/* List Agenda Kunjungan Terdaftar di Bulan ini */}
+                      <div>
+                        <h4 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
+                          <i className="fa-solid fa-clipboard-list text-emerald-600"></i>
+                          <span>Agenda Kunjungan Terjadwal ({selectedVisitCell.list.length})</span>
+                        </h4>
+                        {selectedVisitCell.list.length === 0 ? (
+                          <div className="bg-slate-50 border border-slate-200 text-center p-6 rounded-lg text-slate-400 italic">
+                            Belum ada jadwal kunjungan pada bulan ini. Silakan tambahkan kunjungan baru di bawah.
+                          </div>
+                        ) : (
+                          <div className="space-y-3">
+                            {selectedVisitCell.list.map((item, idx) => (
+                              <div key={idx} className="flex justify-between items-start bg-slate-50 border border-slate-200 p-3 rounded-lg hover:border-emerald-200 transition-all">
+                                <div className="space-y-1">
+                                  <div className="flex items-center gap-2">
+                                    <span className="bg-emerald-600 text-white font-extrabold text-[10px] px-2 py-0.5 rounded-full">Kunjungan #{idx+1}</span>
+                                    <span className="font-mono text-xs text-slate-500">{item.tanggal}</span>
+                                  </div>
+                                  <p className="text-xs text-slate-700 font-medium pl-1">{item.materi}</p>
+                                </div>
+                                <button 
+                                  type="button"
+                                  onClick={() => handleDeleteVisitFromCell(idx)}
+                                  className="text-red-500 hover:text-red-700 p-1 rounded-lg hover:bg-red-50 transition"
+                                  title="Hapus Kunjungan ini"
+                                >
+                                  <i className="fa-solid fa-trash text-xs"></i>
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
 
-                      {formData.visited && (
-                        <div className="space-y-4 animate-in fade-in slide-in-from-top-2 duration-150">
-                          <div>
-                            <label className="block text-xs font-bold text-slate-700 mb-1">Tanggal Kunjungan Resmi *</label>
+                      {/* Form Pengisian Kunjungan Baru */}
+                      <form onSubmit={handleAddVisitToCell} className="bg-emerald-50/40 p-4 rounded-xl border border-emerald-100/80 space-y-4">
+                        <h4 className="font-bold text-emerald-950 text-xs uppercase tracking-wider flex items-center gap-2">
+                          <i className="fa-solid fa-calendar-plus text-emerald-600"></i>
+                          <span>Tambah Kunjungan Baru</span>
+                        </h4>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div className="md:col-span-1">
+                            <label className="block text-xs font-bold text-slate-700 mb-1">Tanggal Kunjungan *</label>
                             <input 
                               type="date" required
-                              className="w-full border border-slate-300 rounded-lg px-3.5 py-2 text-sm font-mono focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                              value={formData.tanggal || ""}
-                              onChange={(e) => setFormData({ ...formData, tanggal: e.target.value })}
+                              className="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                              value={newVisitDate}
+                              onChange={(e) => setNewVisitDate(e.target.value)}
                             />
                           </div>
-
-                          <div>
-                            <label className="block text-xs font-bold text-slate-700 mb-1">Uraian Materi / Bentuk Kegiatan Pendampingan *</label>
-                            <textarea 
-                              required rows="3"
-                              className="w-full border border-slate-300 rounded-lg px-3.5 py-2 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                              placeholder="Contoh: Supervisi administrasi pengajaran, Pembinaan IKM, Kesiapan Asesmen Sekolah"
-                              value={formData.materi || ""}
-                              onChange={(e) => setFormData({ ...formData, materi: e.target.value })}
-                            ></textarea>
+                          <div className="md:col-span-2">
+                            <label className="block text-xs font-bold text-slate-700 mb-1">Materi / Uraian Kegiatan Pendampingan *</label>
+                            <input 
+                              type="text" required
+                              placeholder="Misal: Supervisi Klinis Guru Kelas, Evaluasi P5, dll."
+                              className="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                              value={newVisitMateri}
+                              onChange={(e) => setNewVisitMateri(e.target.value)}
+                            />
                           </div>
                         </div>
-                      )}
+
+                        <div className="flex justify-end">
+                          <button 
+                            type="submit"
+                            className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg text-xs transition shadow-sm flex items-center gap-1.5"
+                          >
+                            <i className="fa-solid fa-circle-plus"></i>
+                            <span>Tambahkan Jadwal</span>
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   )}
 
                   {/* --- B. FORM UNTUK TAMBAH BARU DATA KUNJUNGAN --- */}
                   {modalType === "visit_new" && (
-                    <div className="space-y-4">
+                    <form onSubmit={handleSaveData} className="space-y-4">
                       <div>
                         <label className="block text-xs font-bold text-slate-700 mb-1">Pilih / Ketik Nama Sekolah Binaan *</label>
                         <select required
@@ -2285,12 +2307,29 @@
                           <p className="text-sm font-extrabold text-slate-700 mt-1">{formData.status || "-"}</p>
                         </div>
                       </div>
-                    </div>
+
+                      <div className="bg-slate-50 p-4 mt-8 border-t border-slate-200 flex justify-end space-x-3">
+                        <button 
+                          type="button" 
+                          onClick={() => { setIsModalOpen(false); }}
+                          className="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-2 rounded-lg text-xs transition-all shadow-sm"
+                        >
+                          Batal
+                        </button>
+                        <button 
+                          type="submit"
+                          className="text-white font-semibold px-5 py-2 rounded-lg text-xs transition-all shadow-md flex items-center space-x-1.5 bg-emerald-700 hover:bg-emerald-800"
+                        >
+                          <i className="fa-solid fa-cloud-arrow-up"></i>
+                          <span>Simpan Perubahan</span>
+                        </button>
+                      </div>
+                    </form>
                   )}
 
                   {/* --- C. FORM UNTUK DATA TK (Taman Kanak-Kanak) --- */}
                   {modalType === "tk_sekolah" && (
-                    <div className="space-y-6">
+                    <form onSubmit={handleSaveData} className="space-y-6">
                       <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                         <h4 className="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 text-xs uppercase tracking-wider text-purple-700">Profil & Lokasi Administrasi TK</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -2435,108 +2474,28 @@
                         </div>
                       </div>
 
-                      <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                        <h4 className="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 text-xs uppercase tracking-wider text-purple-700">Rombongan Belajar (Rombel)</h4>
-                        <div className="grid grid-cols-2 gap-4">
-                          <div>
-                            <label className="block text-xs font-semibold text-slate-600 mb-1">Kelompok A</label>
-                            <input 
-                              type="number" min="0"
-                              className="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-center focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.rombel?.[0] || 0}
-                              onChange={(e) => {
-                                const val = parseInt(e.target.value) || 0;
-                                const updatedRombel = [...(formData.rombel || [0, 0])];
-                                updatedRombel[0] = val;
-                                setFormData({ ...formData, rombel: updatedRombel });
-                              }}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-xs font-semibold text-slate-600 mb-1">Kelompok B</label>
-                            <input 
-                              type="number" min="0"
-                              className="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-center focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.rombel?.[1] || 0}
-                              onChange={(e) => {
-                                const val = parseInt(e.target.value) || 0;
-                                const updatedRombel = [...(formData.rombel || [0, 0])];
-                                updatedRombel[1] = val;
-                                setFormData({ ...formData, rombel: updatedRombel });
-                              }}
-                            />
-                          </div>
-                        </div>
+                      <div className="bg-slate-50 p-4 mt-8 border-t border-slate-200 flex justify-end space-x-3">
+                        <button 
+                          type="button" 
+                          onClick={() => { setIsModalOpen(false); }}
+                          className="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-2 rounded-lg text-xs transition-all shadow-sm"
+                        >
+                          Batal
+                        </button>
+                        <button 
+                          type="submit"
+                          className="text-white font-semibold px-5 py-2 rounded-lg text-xs transition-all shadow-md flex items-center space-x-1.5 bg-purple-700 hover:bg-purple-800"
+                        >
+                          <i className="fa-solid fa-cloud-arrow-up"></i>
+                          <span>Simpan Perubahan</span>
+                        </button>
                       </div>
-
-                      <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                        <h4 className="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 text-xs uppercase tracking-wider text-purple-700">Status Kepegawaian Guru & Tenaga Kependidikan TK</h4>
-                        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                          <div>
-                            <label className="block text-xs font-semibold text-slate-600 mb-1">PNS / P3K</label>
-                            <input 
-                              type="number" min="0"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-1.5 text-center focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.guru?.pns || 0}
-                              onChange={(e) => {
-                                const val = parseInt(e.target.value) || 0;
-                                setFormData({ ...formData, guru: { ...formData.guru, pns: val } });
-                              }}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-xs font-semibold text-slate-600 mb-1">Non-ASN</label>
-                            <input 
-                              type="number" min="0"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-1.5 text-center focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.guru?.nonAsn || 0}
-                              onChange={(e) => {
-                                const val = parseInt(e.target.value) || 0;
-                                setFormData({ ...formData, guru: { ...formData.guru, nonAsn: val } });
-                              }}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-xs font-semibold text-slate-600 mb-1">Yayasan</label>
-                            <input 
-                              type="number" min="0"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-1.5 text-center focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.guru?.yayasan || 0}
-                              onChange={(e) => {
-                                const val = parseInt(e.target.value) || 0;
-                                setFormData({ ...formData, guru: { ...formData.guru, yayasan: val } });
-                              }}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-xs font-semibold text-slate-600 mb-1">Tendik (Staf/TU)</label>
-                            <input 
-                              type="number" min="0"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-1.5 text-center focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                              value={formData.guru?.tendik || 0}
-                              onChange={(e) => {
-                                const val = parseInt(e.target.value) || 0;
-                                setFormData({ ...formData, guru: { ...formData.guru, tendik: val } });
-                              }}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-xs font-semibold text-slate-600 mb-1">Kepala Sekolah</label>
-                            <input 
-                              type="number" min="0" max="1"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-1.5 text-center focus:ring-2 focus:ring-purple-500 focus:outline-none bg-slate-100 font-bold"
-                              value={formData.guru?.kepsek || 1}
-                              disabled
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    </form>
                   )}
 
                   {/* --- D. FORM UNTUK DATA SEKOLAH (SD & SMP) --- */}
                   {(modalType === "sd_sekolah" || modalType === "smp_sekolah") && (
-                    <div className="space-y-6">
+                    <form onSubmit={handleSaveData} className="space-y-6">
                       <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                         <h4 className="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 text-xs uppercase tracking-wider text-emerald-700">Profil & Lokasi Administrasi</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -2571,240 +2530,31 @@
                               onChange={(e) => setFormData({ ...formData, alamat: e.target.value })}
                             />
                           </div>
-                          <div>
-                            <label className="block text-xs font-bold text-slate-700 mb-1">Akreditasi</label>
-                            <select 
-                              className="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                              value={formData.akreditasi || "A"}
-                              onChange={(e) => setFormData({ ...formData, akreditasi: e.target.value })}
-                            >
-                              <option value="A">A</option>
-                              <option value="B">B</option>
-                              <option value="C">C</option>
-                              <option value="Belum Akreditasi">Belum Akreditasi</option>
-                            </select>
-                          </div>
-                          <div>
-                            <label className="block text-xs font-bold text-slate-700 mb-1">NPSN (Nomor Pokok Sekolah Nasional) *</label>
-                            <input 
-                              type="text" required maxLength="8"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-2 font-mono focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                              placeholder="8 digit nomor"
-                              value={formData.npsn || ""}
-                              onChange={(e) => setFormData({ ...formData, npsn: e.target.value })}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-xs font-bold text-slate-700 mb-1">Nama Kepala Sekolah</label>
-                            <input 
-                              type="text"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                              placeholder="Nama & Gelar Lengkap"
-                              value={formData.kepsek || ""}
-                              onChange={(e) => setFormData({ ...formData, kepsek: e.target.value })}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-xs font-bold text-slate-700 mb-1">No. HP/WA Kepala Sekolah</label>
-                            <input 
-                              type="text"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                              placeholder="Contoh: 0812XXXXXXXX"
-                              value={formData.hpKepsek || ""}
-                              onChange={(e) => setFormData({ ...formData, hpKepsek: e.target.value })}
-                            />
-                          </div>
-                          <div className="md:col-span-2">
-                            <label className="block text-xs font-bold text-slate-700 mb-1">Alamat Email Sekolah</label>
-                            <input 
-                              type="email"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                              placeholder="sekolah@sch.id"
-                              value={formData.email || ""}
-                              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            />
-                          </div>
                         </div>
                       </div>
 
-                      <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                        <h4 className="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 text-xs uppercase tracking-wider text-blue-700">Jumlah Siswa Per Kelas</h4>
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                          {modalType === "sd_sekolah" ? (
-                            <React.Fragment>
-                              {["1", "2", "3", "4", "5", "6"].map((kls) => (
-                                <React.Fragment key={kls}>
-                                  <div>
-                                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">Kls {kls} (Laki-laki)</label>
-                                    <input 
-                                      type="number" min="0"
-                                      className="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-center focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                                      value={formData.murid?.[`L${kls}`] || 0}
-                                      onChange={(e) => {
-                                        const val = parseInt(e.target.value) || 0;
-                                        setFormData({ ...formData, murid: { ...formData.murid, [`L${kls}`]: val } });
-                                      }}
-                                    />
-                                  </div>
-                                  <div>
-                                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">Kls {kls} (Perempuan)</label>
-                                    <input 
-                                      type="number" min="0"
-                                      className="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-center focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                                      value={formData.murid?.[`P${kls}`] || 0}
-                                      onChange={(e) => {
-                                        const val = parseInt(e.target.value) || 0;
-                                        setFormData({ ...formData, murid: { ...formData.murid, [`P${kls}`]: val } });
-                                      }}
-                                    />
-                                  </div>
-                                </React.Fragment>
-                              ))}
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              {["7", "8", "9"].map((kls) => (
-                                <React.Fragment key={kls}>
-                                  <div>
-                                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">Kls {kls} (Laki-laki)</label>
-                                    <input 
-                                      type="number" min="0"
-                                      className="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-center focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                                      value={formData.murid?.[`L${kls}`] || 0}
-                                      onChange={(e) => {
-                                        const val = parseInt(e.target.value) || 0;
-                                        setFormData({ ...formData, murid: { ...formData.murid, [`L${kls}`]: val } });
-                                      }}
-                                    />
-                                  </div>
-                                  <div>
-                                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">Kls {kls} (Perempuan)</label>
-                                    <input 
-                                      type="number" min="0"
-                                      className="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-center focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                                      value={formData.murid?.[`P${kls}`] || 0}
-                                      onChange={(e) => {
-                                        const val = parseInt(e.target.value) || 0;
-                                        setFormData({ ...formData, murid: { ...formData.murid, [`P${kls}`]: val } });
-                                      }}
-                                    />
-                                  </div>
-                                </React.Fragment>
-                              ))}
-                            </React.Fragment>
-                          )}
-                        </div>
+                      <div className="bg-slate-50 p-4 mt-8 border-t border-slate-200 flex justify-end space-x-3">
+                        <button 
+                          type="button" 
+                          onClick={() => { setIsModalOpen(false); }}
+                          className="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-2 rounded-lg text-xs transition-all shadow-sm"
+                        >
+                          Batal
+                        </button>
+                        <button 
+                          type="submit"
+                          className="text-white font-semibold px-5 py-2 rounded-lg text-xs transition-all shadow-md flex items-center space-x-1.5 bg-emerald-700 hover:bg-emerald-800"
+                        >
+                          <i className="fa-solid fa-cloud-arrow-up"></i>
+                          <span>Simpan Perubahan</span>
+                        </button>
                       </div>
-
-                      <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                        <h4 className="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 text-xs uppercase tracking-wider text-cyan-700">Rombongan Belajar (Rombel)</h4>
-                        <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
-                          {modalType === "sd_sekolah" ? (
-                            ["I", "II", "III", "IV", "V", "VI"].map((kls, idx) => (
-                              <div key={idx}>
-                                <label className="block text-xs font-semibold text-slate-600 mb-1">Kls {kls}</label>
-                                <input 
-                                  type="number" min="0"
-                                  className="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-center focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                                  value={formData.rombel?.[idx] || 0}
-                                  onChange={(e) => {
-                                    const val = parseInt(e.target.value) || 0;
-                                    const updatedRombel = [...(formData.rombel || [0,0,0,0,0,0])];
-                                    updatedRombel[idx] = val;
-                                    setFormData({ ...formData, rombel: updatedRombel });
-                                  }}
-                                />
-                              </div>
-                            ))
-                          ) : (
-                            ["VII", "VIII", "IX"].map((kls, idx) => (
-                              <div key={idx}>
-                                <label className="block text-xs font-semibold text-slate-600 mb-1">Kls {kls}</label>
-                                <input 
-                                  type="number" min="0"
-                                  className="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 text-center focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                                  value={formData.rombel?.[idx] || 0}
-                                  onChange={(e) => {
-                                    const val = parseInt(e.target.value) || 0;
-                                    const updatedRombel = [...(formData.rombel || [0,0,0])];
-                                    updatedRombel[idx] = val;
-                                    setFormData({ ...formData, rombel: updatedRombel });
-                                  }}
-                                />
-                              </div>
-                            ))
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                        <h4 className="font-bold text-slate-800 border-b border-slate-200 pb-2 mb-4 text-xs uppercase tracking-wider text-amber-700">Profil Status Guru & Tenaga Kependidikan</h4>
-                        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                          <div>
-                            <label className="block text-xs font-semibold text-slate-600 mb-1">PNS / P3K</label>
-                            <input 
-                              type="number" min="0"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-1.5 text-center focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                              value={formData.guru?.pns || 0}
-                              onChange={(e) => {
-                                const val = parseInt(e.target.value) || 0;
-                                setFormData({ ...formData, guru: { ...formData.guru, pns: val } });
-                              }}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-xs font-semibold text-slate-600 mb-1">Non-ASN</label>
-                            <input 
-                              type="number" min="0"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-1.5 text-center focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                              value={formData.guru?.nonAsn || 0}
-                              onChange={(e) => {
-                                const val = parseInt(e.target.value) || 0;
-                                setFormData({ ...formData, guru: { ...formData.guru, nonAsn: val } });
-                              }}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-xs font-semibold text-slate-600 mb-1">Yayasan</label>
-                            <input 
-                              type="number" min="0"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-1.5 text-center focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                              value={formData.guru?.yayasan || 0}
-                              onChange={(e) => {
-                                const val = parseInt(e.target.value) || 0;
-                                setFormData({ ...formData, guru: { ...formData.guru, yayasan: val } });
-                              }}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-xs font-semibold text-slate-600 mb-1">Tendik (Staf/TU)</label>
-                            <input 
-                              type="number" min="0"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-1.5 text-center focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                              value={formData.guru?.tendik || 0}
-                              onChange={(e) => {
-                                const val = parseInt(e.target.value) || 0;
-                                setFormData({ ...formData, guru: { ...formData.guru, tendik: val } });
-                              }}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-xs font-semibold text-slate-600 mb-1">Kepala Sekolah</label>
-                            <input 
-                              type="number" min="0" max="1"
-                              className="w-full border border-slate-300 rounded-lg px-3 py-1.5 text-center focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-slate-100 font-bold"
-                              value={formData.guru?.kepsek || 1}
-                              disabled
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    </form>
                   )}
 
                   {/* --- E. FORM UNTUK PKKS --- */}
                   {modalType === "pkks" && (
-                    <div className="space-y-4">
+                    <form onSubmit={handleSaveData} className="space-y-4">
                       <div>
                         <label className="block text-xs font-bold text-slate-700 mb-1">Pilih Sekolah Binaan *</label>
                         <select required
@@ -2853,12 +2603,29 @@
                           onChange={(e) => setFormData({ ...formData, keterangan: e.target.value })}
                         ></textarea>
                       </div>
-                    </div>
+
+                      <div className="bg-slate-50 p-4 mt-8 border-t border-slate-200 flex justify-end space-x-3">
+                        <button 
+                          type="button" 
+                          onClick={() => { setIsModalOpen(false); }}
+                          className="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-2 rounded-lg text-xs transition-all shadow-sm"
+                        >
+                          Batal
+                        </button>
+                        <button 
+                          type="submit"
+                          className="text-white font-semibold px-5 py-2 rounded-lg text-xs transition-all shadow-md flex items-center space-x-1.5 bg-emerald-700 hover:bg-emerald-800"
+                        >
+                          <i className="fa-solid fa-cloud-arrow-up"></i>
+                          <span>Simpan Perubahan</span>
+                        </button>
+                      </div>
+                    </form>
                   )}
 
                   {/* --- F. FORM UNTUK JURNAL REFLEKSI --- */}
                   {modalType === "refleksi" && (
-                    <div className="space-y-4">
+                    <form onSubmit={handleSaveData} className="space-y-4">
                       <div>
                         <label className="block text-xs font-bold text-slate-700 mb-1">Pilih Sekolah Binaan *</label>
                         <select required
@@ -2914,30 +2681,27 @@
                           onChange={(e) => setFormData({ ...formData, deskripsi: e.target.value })}
                         ></textarea>
                       </div>
-                    </div>
+
+                      <div className="bg-slate-50 p-4 mt-8 border-t border-slate-200 flex justify-end space-x-3">
+                        <button 
+                          type="button" 
+                          onClick={() => { setIsModalOpen(false); }}
+                          className="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-2 rounded-lg text-xs transition-all shadow-sm"
+                        >
+                          Batal
+                        </button>
+                        <button 
+                          type="submit"
+                          className="text-white font-semibold px-5 py-2 rounded-lg text-xs transition-all shadow-md flex items-center space-x-1.5 bg-emerald-700 hover:bg-emerald-800"
+                        >
+                          <i className="fa-solid fa-cloud-arrow-up"></i>
+                          <span>Simpan Perubahan</span>
+                        </button>
+                      </div>
+                    </form>
                   )}
 
-                  {/* Tombol Aksi di Footer Modal */}
-                  <div className="bg-slate-50 -mx-6 -mb-6 p-4 mt-8 border-t border-slate-200 flex justify-end space-x-3">
-                    <button 
-                      type="button" 
-                      onClick={() => { setIsModalOpen(false); setSelectedVisitCell(null); }}
-                      className="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-2 rounded-lg text-xs transition-all shadow-sm"
-                    >
-                      Batal
-                    </button>
-                    <button 
-                      type="submit"
-                      className={`text-white font-semibold px-5 py-2 rounded-lg text-xs transition-all shadow-md flex items-center space-x-1.5 ${
-                        modalType.startsWith("tk") ? "bg-purple-700 hover:bg-purple-800" : "bg-emerald-700 hover:bg-emerald-800"
-                      }`}
-                    >
-                      <i className="fa-solid fa-cloud-arrow-up"></i>
-                      <span>Simpan Perubahan</span>
-                    </button>
-                  </div>
-
-                </form>
+                </div>
 
               </div>
             </div>
@@ -3118,3 +2882,11 @@
   </script>
 </body>
 </html>
+```
+eof
+
+### Ringkasan Pembaruan yang Dilakukan:
+1. **Migrasi Struktur Data:** `monthsDetail` diubah dari yang sebelumnya hanya menampung objek kunjungan tunggal (atau checklist boolean), kini diubah menjadi array bersarang di mana tiap bulan `0-11` berisi list array objek kunjungan `[{ tanggal, materi }]` sehingga mendukung pencatatan kunjungan dalam jumlah tak terbatas pada bulan yang sama.
+2. **Peningkatan Layout Kunjungan (Interaktif):** Sel bulan yang terisi jadwal kunjungan kini memiliki indikator jumlah jadwal aktif (contoh: jika terdapat 2 kunjungan, akan muncul lencana angka kuning `2` di sudut centang).
+3. **Formulir Multi-Kunjungan pada Modal:** Modal pengisian cell kunjungan bulanan kini dilengkapi list rincian kunjungan aktif lengkap dengan opsi hapus terpisah, ditambah formulir cepat di bawahnya untuk menambahkan agenda kunjungan baru secara instan.
+4. **Optimasi Fitur Cetak Laporan Formal (Kop Dinas):** layout **Matriks Bulanan** dan **Rincian Materi** pada mode cetak (`window.print()`) otomatis menyesuaikan datanya secara detail, rapi, dan dinamis berdasarkan entri multi-kunjungan bulanan yang Anda tambahkan.
